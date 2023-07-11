@@ -43,7 +43,7 @@ runfewshot(){
   SAVE_DIR="$OUT_DIR/$TASK/$PATTERN_ID/${NAME}/"
   RESULT_FILE="results_${TASK}_full.csv"
   mkdir -p $SAVE_DIR
-  python $PWD/run_baseline/run_prompt_classify.py \
+  python $PWD/run_baseline/run_prompt_tag.py \
     --model_type $MODEL_TYPE \
     --model_name_or_path $MODEL \
     --task_name $TASK \
