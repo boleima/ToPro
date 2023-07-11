@@ -88,18 +88,11 @@ PROCESSORS = {
 }
 
 
-def compute_metrics0(preds, labels):
-    scores = {
-        "acc": (preds == labels).mean(),
-        "num": len(preds),
-        "correct": (preds == labels).sum()
-    }
-    return scores
 
 
 def compute_metrics(preds, labels):
     scores = {
-        "acc": f1_score(preds,labels,average='weighted'),
+        "f1": f1_score(preds,labels,average='weighted'),
         "num": len(preds),
         "correct": (preds == labels).sum(),
         "precision": precision_score(preds,labels,average='weighted'),
@@ -277,17 +270,17 @@ def train(args, train_dataset, model, tokenizer, preprocessor, label_list, lang2
                             writer.write('\n======= Predict using the model from checkpoint-{}:\n'.format(global_step))
                             result = evaluate(args, model, preprocessor, split=args.dev_split, language=args.train_language,
                                                 lang2id=lang2id, prefix='checkpoint-' + str(global_step))
-                            avg_acc = result['acc']
-                            writer.write('{}={}\n'.format(args.train_language, result['acc']))
+                            avg_f1 = result['f1']
+                            writer.write('{}={}\n'.format(args.train_language, result['f1']))
 
    
                     if args.save_only_best_checkpoint:
-                        logger.info(" Dev accuracy of train language = {}".format(avg_acc))
-                        if avg_acc > best_score:
-                            logger.info(" average acc={} > best_score={}".format(avg_acc, best_score))
+                        logger.info(" Dev f1 of train language = {}".format(avg_f1))
+                        if avg_f1 > best_score:
+                            logger.info(" average f1={} > best_score={}".format(avg_f1, best_score))
                             output_dir = os.path.join(args.output_dir, "checkpoint-best")
                             best_checkpoint = output_dir
-                            best_score = avg_acc
+                            best_score = avg_f1
                             # Save model checkpoint
                             if not os.path.exists(output_dir):
                                 os.makedirs(output_dir)
@@ -304,11 +297,11 @@ def train(args, train_dataset, model, tokenizer, preprocessor, label_list, lang2
                             torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
                             logger.info("Saving optimizer and scheduler states to %s", output_dir)
                     if args.early_stopping:
-                        if avg_acc > previous_score:
+                        if avg_f1 > previous_score:
                             num_worse_epoch = 0
                         else:
                             num_worse_epoch += 1
-                        previous_score = avg_acc
+                        previous_score = avg_f1
 
                     else:
                         # Save model checkpoint
@@ -448,7 +441,7 @@ def evaluate(args, model, preprocessor, split='train', language='en', lang2id=No
         #             else:
         #                 fout.write('{}\t{}\t{}\n'.format(p, l, s))
         logger.info("***** Eval results {} {} *****".format(prefix, language))
-        logger.info(f"acc = {results['acc']}")
+        logger.info(f"f1 = {results['f1']}")
         # for key in sorted(results.keys()):
         #     logger.info("  %s = %s", key, str(results[key]))
 
@@ -937,9 +930,9 @@ def main():
             model.to(args.device)
             result = evaluate(args, model, preprocessor, split='dev', language=args.train_language, lang2id=lang2id,
                               prefix=prefix)
-            if result['acc'] > best_score:
+            if result['f1'] > best_score:
                 best_checkpoint = checkpoint
-                best_score = result['acc']
+                best_score = result['f1']
             result = dict((k + "_{}".format(global_step), v) for k, v in result.items())
             results.update(result)
 
@@ -947,8 +940,8 @@ def main():
         with open(output_eval_file, 'w') as writer:
             for key, value in results.items():
                 writer.write('{} = {}\n'.format(key, value))
-            writer.write("Best checkpoint is {}, best accuracy is {}".format(best_checkpoint, best_score))
-            logger.info("Best checkpoint is {}, best accuracy is {}".format(best_checkpoint, best_score))
+            writer.write("Best checkpoint is {}, best f1 is {}".format(best_checkpoint, best_score))
+            logger.info("Best checkpoint is {}, best f1 is {}".format(best_checkpoint, best_score))
 
     # Prediction
     if args.do_predict and args.local_rank in [-1, 0]:
@@ -964,8 +957,8 @@ def main():
                 output_file = os.path.join(args.output_dir, 'test-{}.tsv'.format(language))
                 result = evaluate(args, model, preprocessor, split=args.test_split, language=language, lang2id=lang2id,
                                   prefix='best_checkpoint' if args.init_checkpoint else args.model_name_or_path)
-                writer.write('{}={}\n'.format(language, result['acc']))
-                logger.info('{}={}'.format(language, result['acc']))
+                writer.write('{}={}\n'.format(language, result['f1']))
+                logger.info('{}={}'.format(language, result['f1']))
                 total += result['num']
                 total_correct += result['correct']
             writer.write('total={}\n'.format(total_correct / total))
@@ -983,7 +976,7 @@ def main():
                 output_file = os.path.join(args.output_dir, 'dev-{}.tsv'.format(language))
                 result = evaluate(args, model, preprocessor, split='dev', language=language, lang2id=lang2id,
                                   prefix='best_checkpoint')
-                writer.write('{}={}\n'.format(language, result['acc']))
+                writer.write('{}={}\n'.format(language, result['f1']))
                 total += result['num']
                 total_correct += result['correct']
             writer.write('total={}\n'.format(total_correct / total))
