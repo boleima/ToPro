@@ -356,16 +356,16 @@ class UdposPVP(PVP):
     "ADP": ["position"],
     "ADV": ["verbal"],
     "AUX": ["auxiliar"],
-    "CCONJ": ["and"],
+    "CCONJ": ["link"],
     "DET": ["determine"],
     "INTJ": ["mood"],
-    "NOUN": ["noun"],
+    "NOUN": ["thing"],
     "NUM": ["number"],
-    "PART": ["particle"],
+    "PART": ["functional"],
     "PRON": ["reference"],
     "PROPN": ["name"],
     "PUNCT": ["punct"],
-    "SCONJ": ["if"],
+    "SCONJ": ["condition"],
     "SYM": ["symbol"],
     "VERB": ["verb"],
     "X": ["other"]
@@ -401,7 +401,7 @@ class PanxPVP(PVP):
         
         # pattern 0: TEXT. The tag is [mask].
         if self.pattern_id == 0:
-            return [text_a], ['The named entity of ', text_b, " is: ", self.mask, ' .']
+            return [text_a], ['The named entity of ', text_b, " is a kind of: ", self.mask, ' .']
         else:
             raise ValueError("No pattern implemented for id {}".format(self.pattern_id))
 
