@@ -32,11 +32,11 @@ class UdposProcessor(DataProcessor):
     def __init__(self):
         pass
 
-    def get_examples(self, data_dir, language='en', split='train', num_sample=-1, model="bert-base-multilingual-cased"):
+    def get_examples(self, data_dir, model, language='en', split='train', num_sample=-1):
         """See base class."""
         examples = []
         for lg in language.split(','):
-            data_file = os.path.join(data_dir, lg, "{}.{}".format("dev", model))
+            data_file = os.path.join(data_dir, lg, "{}.{}".format(split, model))
             with open(data_file, encoding="utf-8") as f:
                 words=[]
                 labels=[]
@@ -70,7 +70,7 @@ class UdposProcessor(DataProcessor):
                 assert isinstance(text_a, str) and isinstance(text_b, str) and isinstance(label, str)
                 new_example.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label, language=example[2]))
 
-
+        """
         if num_sample != -1:
             # examples = random.sample(examples, num_sample)
             random.shuffle(examples)
@@ -86,17 +86,18 @@ class UdposProcessor(DataProcessor):
                 elif len(l0)==num_sample and len(l1)==num_sample and len(l2)==num_sample:
                     break
             examples = l0+l1+l2
+        """
 
         return new_example
 
-    def get_train_examples(self, data_dir, language='en', num_sample=-1, model="bert-base-multilingual-cased"):
-        return self.get_examples(data_dir, language, split='train', num_sample=num_sample, model=model)
+    def get_train_examples(self, data_dir, model, language='en', num_sample=-1):
+        return self.get_examples(data_dir, model, language, split='train', num_sample=num_sample)
 
-    def get_dev_examples(self, data_dir, language='en', num_sample=-1, model="bert-base-multilingual-cased"):
-        return self.get_examples(data_dir, language, split='dev', num_sample=num_sample, model=model)
+    def get_dev_examples(self, data_dir, model, language='en', num_sample=-1):
+        return self.get_examples(data_dir, model, language, split='dev', num_sample=num_sample)
 
-    def get_test_examples(self, data_dir, language='en', num_sample=-1, model="bert-base-multilingual-cased"):
-        return self.get_examples(data_dir, language, split='test', num_sample=num_sample, model=model)
+    def get_test_examples(self, data_dir, model, language='en', num_sample=-1):
+        return self.get_examples(data_dir, model, language, split='test', num_sample=num_sample)
 
     def get_translate_train_examples(self, data_dir, language='en', num_sample=-1):
         """See base class."""
