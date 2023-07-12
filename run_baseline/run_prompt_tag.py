@@ -491,17 +491,17 @@ def load_and_cache_examples(args, task, preprocessor, split='train', language='e
         logger.info("Creating features from dataset file at %s", args.data_dir)
         label_list = processor.get_labels()
         if split == 'train':
-            examples = processor.get_train_examples(args.data_dir, language, args.num_sample, args.model_name_or_path)
+            examples = processor.get_train_examples(args.data_dir, args.model_name_or_path, language, args.num_sample)
         elif split == 'translate-train':
             examples = processor.get_translate_train_examples(args.data_dir, language)
         elif split == 'translate-test':
             examples = processor.get_translate_test_examples(args.data_dir, language)
         elif split == 'dev':
-            examples = processor.get_dev_examples(args.data_dir, language, args.model_name_or_path)
+            examples = processor.get_dev_examples(args.data_dir, args.model_name_or_path, language)
         elif split == 'pseudo_test':
             examples = processor.get_pseudo_test_examples(args.data_dir, language)
         else:
-            examples = processor.get_test_examples(args.data_dir, language, args.model_name_or_path)
+            examples = processor.get_test_examples(args.data_dir, args.model_name_or_path, language)
 
         if args.retrieval:
             examples = add_priming_data(examples, args.data_dir, args.task_name, args.retriever_name,
