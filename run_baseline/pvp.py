@@ -358,7 +358,7 @@ class UdposPVP(PVP):
     "AUX": ["auxiliar"],
     "CCONJ": ["link"],
     "DET": ["determine"],
-    "INTJ": ["mood"],
+    "INTJ": ["mode"],
     "NOUN": ["thing"],
     "NUM": ["number"],
     "PART": ["functional"],
