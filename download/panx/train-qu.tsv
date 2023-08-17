@@ -1,0 +1,630 @@
+San	B-LOC
+Miguel	I-LOC
+de	I-LOC
+la	I-LOC
+Frontera	I-LOC
+
+Carl	B-PER
+von	I-PER
+Linné	I-PER
+
+===	O
+Rimay	B-ORG
+yachaq	I-ORG
+ruphay	I-ORG
+mit'a	I-ORG
+yachay	I-ORG
+wasi	I-ORG
+nisqap	O
+liwruchasqan	O
+willakuykuna	O
+qillqakunapas	O
+===	O
+
+Piluta	B-ORG
+Hayt'ay	I-ORG
+Pachantin	I-ORG
+Kupa	I-ORG
+1970	I-ORG
+
+Carl	B-PER
+von	I-PER
+Linné	I-PER
+
+Piluta	B-ORG
+Hayt'ay	I-ORG
+Pachantin	I-ORG
+Kupa	I-ORG
+1990	I-ORG
+Italya	B-LOC
+''	O
+'Semifinal	O
+''	O
+'52	O
+
+Alessandro	B-PER
+Del	I-PER
+Piero	I-PER
+-	O
+8	O
+.	O
+
+'	O
+''	O
+Climinti	B-PER
+II	I-PER
+''	O
+'	O
+
+Kamasqa	O
+,	O
+Alan	B-PER
+García	I-PER
+Umalliqmi	O
+.	O
+
+'	O
+''	O
+Antonio	B-PER
+Guzmán	I-PER
+Blanco	I-PER
+''	O
+'	O
+
+Piluta	B-ORG
+Hayt'ay	I-ORG
+Pachantin	I-ORG
+Kupa	I-ORG
+2014	I-ORG
+
+'	O
+''	O
+Cristiano	B-PER
+Ronaldo	I-PER
+''	O
+'	O
+
+Uma	B-LOC
+llaqtanqa	I-LOC
+Victoria	B-ORG
+de	I-ORG
+Durango	I-ORG
+llaqtam	O
+.	O
+
+Wolfgang	B-PER
+Amadeus	I-PER
+Mozart	I-PER
+
+'	O
+''	O
+Cirilo	B-PER
+Rivarola	I-PER
+''	O
+'	O
+
+Tukumi	B-ORG
+chuntukuna	I-ORG
+,	O
+Lampalliqi	B-LOC
+pruwinsya	I-LOC
+
+North	B-LOC
+Yorkshire	I-LOC
+,	O
+Yorkshire	B-ORG
+Dales	I-ORG
+mama	I-ORG
+llaqta	I-ORG
+parki	I-ORG
+
+Antonio	B-PER
+José	I-PER
+de	I-PER
+Sucre	I-PER
+
+Chopin	B-PER
+,	I-PER
+Frédéric	I-PER
+(	O
+1810-1849	O
+)	O
+
+Piluta	B-ORG
+Hayt'ay	I-ORG
+Pachantin	I-ORG
+Kupa	I-ORG
+1994	I-ORG
+
+'	O
+''	O
+Taro	B-PER
+Aso	I-PER
+''	O
+'	O
+
+'	O
+''	O
+Paolo	B-PER
+Rossi	I-PER
+''	O
+'	O
+
+Piluta	B-ORG
+Hayt'ay	I-ORG
+Pachantin	I-ORG
+Kupa	I-ORG
+1958	I-ORG
+
+Sumaku	B-ORG
+Napu	I-ORG
+-	I-ORG
+Galeras	I-ORG
+mama	I-ORG
+llaqta	I-ORG
+parki	I-ORG
+
+Piluta	B-ORG
+Hayt'ay	I-ORG
+Pachantin	I-ORG
+Kupa	I-ORG
+2006	I-ORG
+
+'	O
+''	O
+Ukayali	B-LOC
+suyu	I-LOC
+''	O
+'	O
+
+'	O
+''	O
+Ramón	B-PER
+Castilla	I-PER
+''	O
+'	O
+
+Cartagena	B-LOC
+(	I-LOC
+Kulumbya	I-LOC
+)	I-LOC
+
+PUSAPUNA	O
+Harvard	B-ORG
+Yachay	I-ORG
+Suntur	I-ORG
+
+Covent	O
+Garden	O
+Theatre]]	O
+,	O
+London	B-LOC
+
+PUSAPUNA	O
+Stanford	B-ORG
+Yachay	I-ORG
+Suntur	I-ORG
+
+Hukllachasqa	B-LOC
+Amirika	I-LOC
+Suyukuna	I-LOC
+
+Xalapa-Enríquez	B-LOC
+,	O
+Veracruz	B-LOC
+.	O
+
+Podocarpus	B-ORG
+mama	I-ORG
+llaqta	I-ORG
+parki	I-ORG
+
+Gerard	B-PER
+Piqué	I-PER
+-	O
+4	O
+.	O
+
+Paspanshu	B-LOC
+''Lipaugus	O
+vociferans	O
+''	O
+
+PUSAPUNA	O
+Yale	B-ORG
+Yachay	I-ORG
+Suntur	I-ORG
+
+Piluta	B-ORG
+Hayt'ay	I-ORG
+Pachantin	I-ORG
+Kupa	I-ORG
+2006	I-ORG
+
+Laram	B-ORG
+Q'awa	I-ORG
+(	I-ORG
+Paqaqi	I-ORG
+)	I-ORG
+
+'	O
+''	O
+Ronaldo	B-PER
+''	O
+'	O
+
+,	O
+Frankfurt	B-LOC
+am	I-LOC
+Main	I-LOC
+
+'	O
+''	O
+Gerd	B-PER
+Müller	I-PER
+''	O
+'	O
+
+'	O
+''	O
+Huwan	B-PER
+XV	I-PER
+''	O
+'	O
+
+Mario	B-PER
+Kempes	I-PER
+-	O
+11	O
+.	O
+
+'	O
+''	O
+Climinti	B-PER
+IV	I-PER
+''	O
+'	O
+
+PUSAPUNA	O
+Montero	B-LOC
+(	I-LOC
+Buliwya	I-LOC
+)	I-LOC
+
+6	O
+GP	B-LOC
+de	I-LOC
+Mónaco	I-LOC
+(	O
+1987-1989-1990-1991-1992-1993	O
+)	O
+
+'	O
+''	O
+Kaká	B-PER
+''	O
+'	O
+
+Piluta	B-ORG
+Hayt'ay	I-ORG
+Pachantin	I-ORG
+Kupa	I-ORG
+1974	I-ORG
+
+Johann	B-PER
+Sebastian	I-PER
+Bach	I-PER
+
+Chilipi	B-ORG
+amachasqa	I-ORG
+sallqa	I-ORG
+suyukuna	I-ORG
+
+Toribio	B-PER
+Rodríguez	I-PER
+de	I-PER
+Mendoza	I-PER
+
+Francisco	B-PER
+Morazán	I-PER
+Quesada	I-PER
+.	O
+
+San	B-LOC
+Miguel	I-LOC
+de	I-LOC
+los	I-LOC
+Bancos	I-LOC
+
+PUSAPUNA	O
+San	B-LOC
+Huwan	I-LOC
+distritu	I-LOC
+(	I-LOC
+Lukana	I-LOC
+)	I-LOC
+
+pusapuna	O
+Hipólito	B-PER
+Ruiz	I-PER
+López	I-PER
+
+Piluta	B-ORG
+Hayt'ay	I-ORG
+Pachantin	I-ORG
+Kupa	I-ORG
+1998	I-ORG
+
+Turpiña	B-LOC
+''Fulica	O
+gigantea	O
+''	O
+
+Kambuya	B-LOC
+Qhapaq	I-LOC
+suyu	I-LOC
+(	O
+Ristauradu	O
+,	O
+1993-	O
+)	O
+===	O
+
+Wantar	B-LOC
+Chawin	I-LOC
+(	O
+Wantar	B-LOC
+Chawin	I-LOC
+distritupi	I-LOC
+)	O
+
+Waylla	B-LOC
+urpi	I-LOC
+''Zenaida	O
+auriculata	O
+''	O
+
+Inka	B-ORG
+ñan	I-ORG
+,	O
+huknin	O
+tiqsimuyuntinpi	O
+riqsisqa	O
+“trekking”	O
+
+Pallanchikpa	B-ORG
+basilikan	I-ORG
+(	I-ORG
+Qupaqhawanapi	I-ORG
+)	I-ORG
+
+Titiqaqa	B-LOC
+mama	I-LOC
+llaqta	I-LOC
+risirwa	I-LOC
+
+Santa	B-LOC
+Elena	I-LOC
+(	I-LOC
+Ikwadur	I-LOC
+)	I-LOC
+;	O
+
+Sankay	B-ORG
+mama	I-ORG
+llaqta	I-ORG
+parki	I-ORG
+
+T'uru	B-ORG
+T'uru	B-ORG
+mamallaqta	I-ORG
+parki	I-ORG
+
+Rimaq	B-LOC
+mayu	I-LOC
+(	O
+Lurigancho-Chosicapi	O
+)	O
+
+Madidi	B-ORG
+mamallaqta	I-ORG
+parkipi	I-ORG
+(	O
+Rurrenabaque	B-LOC
+ñiqpi	O
+)	O
+
+Marilyn	B-PER
+Monroe	I-PER
+
+PUSAPUNA	O
+Suntur	B-ORG
+(	I-ORG
+mawk'a	I-ORG
+llaqta	I-ORG
+)	I-ORG
+
+San	B-LOC
+Vicente	I-LOC
+Kañitipi	I-LOC
+distritu	I-LOC
+
+'	O
+''	O
+Binidiktu	B-PER
+XII	I-PER
+''	O
+'	O
+
+Urin	B-LOC
+Awya	I-LOC
+Yalapi	I-LOC
+Amarumayu	B-LOC
+sach'a-sach'a	I-LOC
+suyupim	I-LOC
+kawsan	O
+.	O
+
+PUSAPUNA	O
+Wankani	B-LOC
+distritu	I-LOC
+(	I-LOC
+Hunin	I-LOC
+)	I-LOC
+
+Wasqar	B-LOC
+q'inti	I-LOC
+''Patagona	O
+gigas	O
+''	O
+
+Mayupura	B-LOC
+(	I-LOC
+Tarija	I-LOC
+)	I-LOC
+
+Chururu	B-LOC
+''Phoenicoparrus	O
+andinus	O
+''	O
+
+César	B-PER
+Vallejo	I-PER
+(	O
+1892-1938	O
+)	O
+
+-	O
+''	O
+Carlos	B-PER
+Blanco	I-PER
+Galindo	I-PER
+''	O
+'	O
+
+PUSAPUNA	O
+Paqcha	B-LOC
+distritu	I-LOC
+(	I-LOC
+Chuta	I-LOC
+)	I-LOC
+
+Universidade	B-ORG
+Federal	I-ORG
+de	I-ORG
+Minas	I-ORG
+Gerais	I-ORG
+
+Sawanqaya	B-LOC
+(	O
+5.976	O
+m	O
+)	O
+
+José	B-PER
+María	I-PER
+Achá	I-PER
+Valiente	I-PER
+
+PUSAPUNA	O
+Chuqi	B-LOC
+Uta	I-LOC
+munisipyu	I-LOC
+
+Inka	B-ORG
+Garcilaso	I-ORG
+de	I-ORG
+la	I-ORG
+Vega	I-ORG
+
+'	O
+''	O
+Junichiro	B-ORG
+Koizumi	I-ORG
+''	O
+'	O
+
+Chilipi	B-ORG
+amachasqa	I-ORG
+sallqa	I-ORG
+suyukuna	I-ORG
+
+Chini	B-LOC
+''	O
+(	O
+Urera	O
+)	O
+''	O
+
+'	O
+''	O
+Li	B-PER
+Peng	I-PER
+''	O
+'	O
+
+Usqhullu	B-LOC
+''Felis	O
+colocolo	O
+''	O
+
+PUSAPUNA	O
+Pachakutiq	B-PER
+Inka	I-PER
+Yupanki	I-PER
+
+PUSAPUNA	O
+Wankapampa	B-LOC
+mayu	I-LOC
+(	I-LOC
+Pasqu	I-LOC
+)	I-LOC
+
+**	O
+Wallqanqa	B-ORG
+''	O
+(	O
+escudo	O
+)	O
+''	O
+
+Kunti	B-LOC
+Walla	I-LOC
+(	I-LOC
+Ikwadur	I-LOC
+)	I-LOC
+
+Piluta	B-ORG
+Hayt'ay	I-ORG
+Pachantin	I-ORG
+Kupa	I-ORG
+2006	I-ORG
+
+P'utuqsi	B-LOC
+suyu	I-LOC
+,	O
+Chinchay	B-LOC
+Lipis	I-LOC
+pruwinsya	I-LOC
+
+'	O
+''	O
+Petar	B-PER
+Stoyanov	I-PER
+''	O
+'	O
+
+Luritu	B-LOC
+suyu	I-LOC
+,	O
+Maynas	B-LOC
+pruwinsya	I-LOC
+
+Qaqa	B-LOC
+paluma	I-LOC
+''	O
+(	O
+Columba	O
+livia	O
+)	O
+''	O
