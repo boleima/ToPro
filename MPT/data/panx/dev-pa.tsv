@@ -1,0 +1,670 @@
+ਰੀਡਿਰੈਕਟ	O
+ਆਲਮੇਰੀਆ	B-ORG
+ਵੱਡਾ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਰਾਹਤ	B-PER
+ਫ਼ਤਿਹ	I-PER
+ਅਲੀ	I-PER
+ਖ਼ਾਨ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਉੱਤਰੀ	B-ORG
+ਜ਼ੋਨ	I-ORG
+ਸੱਭਿਆਚਾਰਕ	I-ORG
+ਕੇਂਦਰ	I-ORG
+
+ਗੁਰੂ	B-PER
+ਹਰਿਕ੍ਰਿਸ਼ਨ	I-PER
+ਜੀ	I-PER
+
+ਬੋੜੋਲੈਂਡ	B-ORG
+ਦਾ	I-ORG
+ਕੌਮੀ	I-ORG
+ਜਮਹੂਰੀ	I-ORG
+ਫਰੰਟ	I-ORG
+
+ਸੁਨ	B-PER
+ਯਾਤ	I-PER
+ਸਨ	I-PER
+
+੨੦੦੮	B-ORG
+ਓਲੰਪਿਕ	I-ORG
+ਖੇਡਾਂ	I-ORG
+ਦੇ	I-ORG
+ਵਿੱਚ	I-ORG
+ਕੁਸ਼ਤੀ	I-ORG
+–	I-ORG
+ਪੁਰਸ਼ਾਂ	I-ORG
+ਦੀ	I-ORG
+ਫ੍ਰੀਸਟਾਇਲ	I-ORG
+੫੫	I-ORG
+ਕਿਲੋਗਰਾਮ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਮੁਗ਼ਲ	B-PER
+ਬਾਦਸ਼ਾਹਾਂ	I-PER
+ਦੀ	I-PER
+ਸੂਚੀ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਡਾ.	B-PER
+ਸਤਿੰਦਰ	I-PER
+ਸਿੰਘ	I-PER
+ਨੂਰ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਤਰੇਬੂਖ਼ੇਨਾ	B-ORG
+ਦਾ	I-ORG
+ਕਿਲਾ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਐੱਚ	B-PER
+ਜੀ	I-PER
+ਵੈੱਲਜ਼	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਰਬਿੰਦਰ	B-PER
+ਨਾਥ	I-PER
+ਟੈਗੋਰ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਨੁਸਰਤ	B-PER
+ਫ਼ਤਿਹ	I-PER
+ਅਲੀ	I-PER
+ਖ਼ਾਨ	I-PER
+
+ਅਮਰੀਕਾ	B-ORG
+ਦੀ	I-ORG
+ਹਾਇਕੂ	I-ORG
+ਸੁਸਾਇਟੀ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਭੀਮ	B-PER
+ਰਾਓ	I-PER
+ਅੰਬੇਡਕਰ	I-PER
+
+ਸੰਤ	B-PER
+ਪੌਲ	I-PER
+ਨੇ	O
+ਪ੍ਰਚਾਰ	O
+ਸ਼ੁਰੂ	O
+ਕੀਤਾ।	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਤਾਦ	B-LOC
+ਡ	I-LOC
+ਸੁਇੱਸ	I-LOC
+
+ਫ਼ਵਾਦ	B-ORG
+ਅਫ਼ਜ਼ਲ	I-ORG
+ਅਲੀ	I-ORG
+ਖਾਨ	I-ORG
+(	O
+ਕੈਮਿਓ	O
+ਦਿੱਖ	O
+)	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਸ਼ਾਨਨ	B-ORG
+ਪਾਵਰ	I-ORG
+ਹਾਊਸ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਬੀ.	B-ORG
+ਐਸ.	I-ORG
+ਸੀ.	I-ORG
+ਯੰਗ	I-ORG
+ਬੁਆਇਜ਼	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਜੋਸਫ	B-PER
+ਡੇਵੀ	I-PER
+ਕਨਿੰਘਮ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਡਾਉਨ	B-ORG
+ਟੂ	I-ORG
+ਅਰਥ	I-ORG
+(	I-ORG
+ਰਸਾਲਾ	I-ORG
+)	I-ORG
+
+'	O
+''	O
+ਬ੍ਰਾਜ਼ੀਲ	B-LOC
+''	O
+'	O
+
+*ਆਸਟ੍ਰੀਆ	O
+ਨੂੰ	O
+ਹੰਗਰੀ	B-LOC
+ਦੀ	O
+ਸੁਤੰਤਰਤਾ	O
+ਸਵੀਕਾਰ	O
+ਕਰਨੀ	O
+ਪਈ।	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਗੁਲਾਬੀ	B-LOC
+ਪਰੀ	I-LOC
+ਆਰਮਾਦਿੱਲੋ	I-LOC
+
+ਮਨਾਮਾ	B-LOC
+(	O
+'	O
+''	O
+'	O
+)	O
+
+ਏਜਕਰੌਕਲ	B-LOC
+(	O
+Aizkraukle	O
+)	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਲੀਮ	B-LOC
+ਖ਼ਾਨ	I-LOC
+(	I-LOC
+ਸ਼ਹਿਰ	I-LOC
+)	I-LOC
+
+ਰੀਡਿਰੈਕਟ	O
+ਦ	B-PER
+ਗਰੇਟ	I-PER
+ਖਲੀ	I-PER
+
+ਖ਼ਾਲਸਾ	B-ORG
+ਕਾਲਜ	I-ORG
+,	I-ORG
+ਅੰਮ੍ਰਿਤਸਰ	I-ORG
+
+ਸਜਲ	B-PER
+ਅਲੀ	I-PER
+(	O
+ਗੁਲ-ਏ-ਰਾਣਾ	O
+)	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਕੈਲੀਫ਼ੋਰਨੀਆ	B-ORG
+ਯੂਨੀਵਰਸਿਟੀ	I-ORG
+,	I-ORG
+ਬਰਕਲੀ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਦ	B-PER
+ਗਰੇਟ	I-PER
+ਖਲੀ	I-PER
+
+ਵਾਲਕਾ	B-LOC
+(	O
+Valka	O
+)	O
+
+ਗੁਰੂ	B-PER
+ਗੋਬਿੰਦ	I-PER
+ਸਿੰਘ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਉਸਤਾਦ	B-PER
+ਬੜੇ	I-PER
+ਗ਼ੁਲਾਮ	I-PER
+ਅਲੀ	I-PER
+ਖ਼ਾਨ	I-PER
+
+ਮਹਾਰਾਜਾ	B-PER
+ਭੁਪਿੰਦਰ	I-PER
+ਸਿੰਘ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਅਬੁਲ	B-PER
+ਅਲਾ	I-PER
+ਮੌਦੂਦੀ	I-PER
+
+ਮੇਰੇ	B-ORG
+ਕ਼ਾਤਿਲ	I-ORG
+ਮੇਰੇ	B-ORG
+ਦਿਲਦਾਰ	I-ORG
+''	O
+
+'	O
+''	O
+ਵਿਲੀਅਮ	B-PER
+ਬਟਲਰ	I-PER
+ਯੇਟਸ	I-PER
+''	O
+'	O
+
+ਪੀਲ	B-LOC
+ਡਿਸਟ੍ਰਿਕਟ	I-LOC
+ਸਕੂਲ	I-LOC
+ਬੋਰਡ	I-LOC
+
+'	O
+''	O
+ਲਖਨਊ	B-LOC
+''	O
+'	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਬੋਸਨੀਆ	B-LOC
+ਅਤੇ	I-LOC
+ਹਰਜ਼ੇਗੋਵੀਨਾ	I-LOC
+
+ਅਫ਼ਰੀਕੀ	B-LOC
+ਮਹਾਨ	I-LOC
+ਝੀਲਾਂ	I-LOC
+
+ਔਂਗ	B-PER
+ਸੈਨ	I-PER
+ਸੂ	I-PER
+ਚੀ	I-PER
+
+''	O
+ਮੋਰਾਂ	B-PER
+ਸਰਕਾਰ	I-PER
+''	O
+
+ਵਜ਼ੀਰ	B-PER
+ਆਗ਼ਾ	I-PER
+(	O
+ਜਨਮ:1922	O
+)	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਰੇਈਨਾ	B-ORG
+ਸੋਫ਼ੀਆ	I-ORG
+ਕੌਮੀ	I-ORG
+ਕਲਾ	I-ORG
+ਕੇਂਦਰ	I-ORG
+ਅਜਾਇਬਘਰ	I-ORG
+
+ਪੂਰਬ	O
+ਅਤੇ	O
+ਤ੍ਰਿਨੀਦਾਦ	B-ORG
+ਅਤੇ	I-ORG
+ਤੋਬਾਗੋ	I-ORG
+ਤੋਂ	O
+400	O
+ਕਿ.ਮੀ	O
+.	O
+
+==ਗਰੀਟਿੰਗ	O
+ਕਾਰਡ	O
+ਅਤੇ	O
+ਭਾਰਤ	B-LOC
+ਦਾ	O
+ਰਿਕਾਰਡ==	O
+
+ਰੀਡਿਰੈਕਟ	O
+੨੦੦੮	B-ORG
+ਓਲੰਪਿਕ	I-ORG
+ਖੇਡਾਂ	I-ORG
+ਦੇ	I-ORG
+ਵਿੱਚ	I-ORG
+ਕੁਸ਼ਤੀ	I-ORG
+–	I-ORG
+ਮਰਦਾਂ	I-ORG
+ਦੀ	I-ORG
+ਫਰੀਸਟਾਈਲ	I-ORG
+੬੦	I-ORG
+ਕਿਲੋਗਰਾਮ	I-ORG
+
+'	O
+''	O
+ਅਫ਼ਰੀਕਾ	B-LOC
+''	O
+'	O
+
+ਗੁਰੂ	B-ORG
+ਨਾਨਕ	I-ORG
+ਦੇਵ	I-ORG
+ਯੂਨੀਵਰਸਿਟੀ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਾਂਤੀਆਗੋ	B-ORG
+ਦਾ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+(	I-ORG
+ਖ਼ੇਰੇਸ	I-ORG
+ਦੇ	I-ORG
+ਲਾ	I-ORG
+ਫਰੌਂਤੇਰਾ	I-ORG
+)	I-ORG
+
+੨੦੦੮	B-ORG
+ਓਲੰਪਿਕ	I-ORG
+ਖੇਡਾਂ	I-ORG
+ਦੇ	I-ORG
+ਵਿੱਚ	I-ORG
+ਕੁਸ਼ਤੀ	I-ORG
+–	I-ORG
+ਪੁਰਸ਼ਾਂ	I-ORG
+ਦੀ	I-ORG
+ਗ੍ਰੈਕੋ-ਰੋਮਨ	I-ORG
+੧੨੦	I-ORG
+ਕਿਲੋਗਰਾਮ	I-ORG
+
+ਜਨਤਾ	B-ORG
+ਦਲ	I-ORG
+(	I-ORG
+ਯੁਨਾਈਟਡ	I-ORG
+)	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਪ੍ਰੋਫ਼ੈਸਰ	B-PER
+ਮੋਹਨ	I-PER
+ਸਿੰਘ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਮਹਾਂਦੇਵ	B-PER
+ਗੋਵਿੰਦ	I-PER
+ਰਾਨਡੇ	I-PER
+
+ਕੁਲੋਤੁੰਗ	B-PER
+ਚੋਲ	I-PER
+ਦੂਜਾ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਾਂਤਾ	B-ORG
+ਮਾਰੀਆ	I-ORG
+ਲਾ	I-ORG
+ਰਿਆਲ	I-ORG
+ਵੱਡਾ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+
+ਸ਼ਿਵ	B-PER
+ਕੁਮਾਰ	I-PER
+ਬਟਾਲਵੀ	I-PER
+-	O
+(	O
+1937-1973	O
+)	O
+-===	O
+
+ਬੌਸਟਨ	B-LOC
+(	O
+ਅਬਾਦੀ	O
+617,594	O
+)	O
+
+ਉਸਤਾਦ	B-PER
+ਬੜੇ	I-PER
+ਗ਼ੁਲਾਮ	I-PER
+ਅਲੀ	I-PER
+ਖ਼ਾਨ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਨੁਏਸਤਰਾ	B-ORG
+ਸੇਨਿਓਰਾ	I-ORG
+ਦੇ	I-ORG
+ਲਾ	I-ORG
+ਆਸੁਨਸੀਓਨ	I-ORG
+ਦਾ	I-ORG
+ਗਿਰਜਾ	I-ORG
+(	I-ORG
+ਵਾਲਦੇਮੋਰੋ	I-ORG
+)	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਚੰਦਰ	B-PER
+ਸ਼ੇਖਰ	I-PER
+ਆਜ਼ਾਦ	I-PER
+
+''	O
+ਸੁਜਾਨ	B-PER
+ਸਿੰਘ	I-PER
+''	O
+
+ਪ੍ਰਕਾਸ਼	B-ORG
+ਦੀ	I-ORG
+ਬਦਲਣਯੋਗ	I-ORG
+ਸਪੀਡ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਲਾ	B-ORG
+ਮੋਤਾ	I-ORG
+ਦਾ	I-ORG
+ਕਿਲਾ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਾਂਤਾ	B-ORG
+ਮਾਰੀਆ	I-ORG
+ਦੇ	I-ORG
+ਥੇਲੌਨ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਾਨ	B-ORG
+ਇਸਤੇਬਾਨ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+(	I-ORG
+ਸੋਗਰਾਂਦੀਓ	I-ORG
+)	I-ORG
+
+'	O
+''	O
+ਗੁੰਟਰ	B-PER
+ਗਰਾਸ	I-PER
+''	O
+'	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਇਸ਼ਤਾਦਿਊ	B-ORG
+ਦਾ	I-ORG
+ਲੂਸ਼	I-ORG
+
+ਭਾਰਤੀ	B-LOC
+ਮਿਆਰੀ	I-LOC
+ਸਮਾਂ	I-LOC
+
+ਮੈਕਸ	B-PER
+ਮੂਲਰ	I-PER
+(	O
+1823-1900	O
+)	O
+
+ਉਸਨੇ	O
+ਭਾਰਤ	B-LOC
+ਵਿੱਚ	O
+ਵੀ	O
+ਕਈ	O
+ਪ੍ਰੋਗਰਾਮਾਂ	O
+ਵਿੱਚ	O
+ਕੰਮ	O
+ਕੀਤਾ।	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਗੁਰੂ	B-PER
+ਤੇਗ	I-PER
+ਬਹਾਦਰ	I-PER
+ਜੀ	I-PER
+
+ਪਟਿਆਲਾ	B-ORG
+ਸਕੂਲ	I-ORG
+ਫ਼ਾਰ	I-ORG
+ਦ	I-ORG
+ਡੈੱਫ਼	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਬਿਲਾਸਪੁਰ	B-LOC
+ਜ਼ਿਲ੍ਹਾ	I-LOC
+,	I-LOC
+ਹਿਮਾਚਲ	I-LOC
+ਪ੍ਰਦੇਸ਼	I-LOC
+
+ਮੱਧ	B-LOC
+ਪ੍ਰਦੇਸ਼	I-LOC
+(	O
+1	O
+)	O
+ਉੱਤਰ	B-LOC
+ਪ੍ਰਦੇਸ਼	I-LOC
+(	O
+20	O
+)	O
+
+Arabistan	O
+–	O
+ਅਰਬੀ	B-LOC
+ਪਰਾਇਦੀਪ	I-LOC
+ਦਾ	O
+ਨਾਮ	O
+ਅਤੇ	O
+ਹੋਰ	O
+ਅਰਥ	O
+
+Registan	O
+–	O
+a	O
+UNESCO	B-ORG
+World	B-ORG
+Heritage	I-ORG
+Site	I-ORG
+in	O
+central	O
+Samarkand	B-LOC
+,	O
+Uzbekistan	B-LOC
+
+ਭਾਈ	B-PER
+ਹਿੰਮਤ	I-PER
+ਸਿੰਘ	I-PER
+
+ਪ੍ਰਧਾਨ	B-PER
+ਮੰਤਰੀ	I-PER
+ਤੂਈਲਾਏਪਾ	O
+ਆਈਓਨੋ	O
+ਸੈਲੇਲੇ	O
+ਮਾਲਿਏਲੇਗਾਓਈ	O
+
+'	O
+''	O
+ਭਰਥਰੀ	B-PER
+ਹਰੀ	I-PER
+''	O
+'	O
+(	O
+ਕਾਵਿ	O
+ਨਾਟ	O
+)	O
+,	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਰਾਹਤ	B-PER
+ਫ਼ਤਿਹ	I-PER
+ਅਲੀ	I-PER
+ਖ਼ਾਨ	I-PER
+
+'	O
+''	O
+ਸਟੋਨਹੈਂਜ	B-ORG
+''	O
+'	O
+
+ਗੁਰੂ	B-ORG
+ਨਾਨਕ	I-ORG
+ਦੇਵ	I-ORG
+ਯੂਨੀਵਰਸਿਟੀ	I-ORG
+'	O
+
+ਉਸ	O
+ਦਾ	O
+ਜਨਮ	O
+ਅਤੇ	O
+ਪਾਲਣ	O
+ਪੋਸ਼ਣ	O
+ਇਰਾਕ	B-LOC
+ਵਿੱਚ	O
+ਹੋਇਆ	O
+ਸੀ।	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਈਅਦ	B-PER
+ਅਹਿਮਦ	I-PER
+ਖ਼ਾਨ	I-PER
+
+ਆਸਟਰੇਲੀਆ	B-LOC
+(	I-LOC
+ਮਹਾਂਦੀਪ	I-LOC
+)	I-LOC
+
+ਰੀਡਿਰੈਕਟ	O
+ਹਾਂਸ	B-PER
+ਕ੍ਰਿਸਚਨ	I-PER
+ਆਂਡਰਸਨ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਿਮੋਨ	B-PER
+ਦ	I-PER
+ਬੋਵੁਆਰ	I-PER
+
+੨੦੦੮	B-ORG
+ਓਲੰਪਿਕ	I-ORG
+ਖੇਡਾਂ	I-ORG
+ਦੇ	I-ORG
+ਵਿੱਚ	I-ORG
+ਕੁਸ਼ਤੀ	I-ORG
+–	I-ORG
+ਮਹਿਲਾਵਾਂ	I-ORG
+ਦੀ	I-ORG
+ਫ੍ਰੀਸਟਾਇਲ	I-ORG
+੪੮	I-ORG
+ਕਿਲੋਗਰਾਮ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਾਨ	B-ORG
+ਪੇਦਰੋ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+(	I-ORG
+ਏਸੇ	I-ORG
+ਦੇ	I-ORG
+ਕਾਯੇਰਾਸ	I-ORG
+)	I-ORG
+
+ਵਿਕਟੋਰੀਆ	B-LOC
+,	I-LOC
+ਸੇਸ਼ੈਲ	I-LOC
+
+ਜੇ	B-PER
+ਸਿੱਧੂ	I-PER
+,	O
+Former	O
+Chairman	O
+and	O
+CEO	O
+of	O
+Sovereign	O
+Bancorp	O
+
+ਭੀਮ	B-PER
+ਰਾਓ	I-PER
+ਅੰਬੇਡਕਰਦੀ	I-PER
+ਦਿੱਲੀ	B-LOC
+ਵਿਚ	O
+ਮੌਤ	O
+ਹੋਈ	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਪਟਿਆਲਾ	B-LOC
+ਅਤੇ	I-LOC
+ਪੂਰਬੀ	I-LOC
+ਪੰਜਾਬ	I-LOC
+ਸਟੇਟਸ	I-LOC
+ਯੂਨੀਅਨ	I-LOC
+(	I-LOC
+ਪੈਪਸੂ	I-LOC
+)	I-LOC
+
+Norwich	B-LOC
+,	O
+England	B-LOC
+(	O
+2012	O
+)	O
+
+ਲਗਰਾਂਜ	B-ORG
+ਦੀ	I-ORG
+ਫੋਰ-ਸਕੁਏਅਰ	I-ORG
+ਥਿਊਰਮ	I-ORG

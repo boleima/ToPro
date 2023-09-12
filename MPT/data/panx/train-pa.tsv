@@ -1,0 +1,619 @@
+ਰੀਡਿਰੈਕਟ	O
+ਰਬਿੰਦਰ	B-PER
+ਨਾਥ	I-PER
+ਟੈਗੋਰ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਮੁਹੰਮਦ	B-PER
+ਬਿਨ	I-PER
+ਤੁਗ਼ਲਕ	I-PER
+
+ਸ਼ਰਧਾ	B-PER
+ਰਾਮ	I-PER
+ਫਿਲੌਰੀ	I-PER
+
+''	O
+ਪਾਸ਼	B-PER
+ਦੀ	O
+ਕਵਿਤਾ	O
+ਦਾ	O
+ਲੋਕਯਾਨਿਕ	O
+ਅਧਿਐਨ	O
+''	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਸੇਂਟ	B-ORG
+ਮੈਰੀ	I-ORG
+ਸਟੇਡੀਅਮ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਟਾਈਮ	B-ORG
+(	I-ORG
+ਪਤ੍ਰਿਕਾ	I-ORG
+)	I-ORG
+
+ਡਾਕਟਰ	B-PER
+ਮੁਹੰਮਦ	I-PER
+ਇਕਬਾਲ	I-PER
+(	O
+1873–1938	O
+)	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਪ੍ਰਗਤੀਸ਼ੀਲ	B-ORG
+ਲਿਖਾਰੀ	I-ORG
+ਲਹਿਰ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਮੈਕਸੀਕੋ	B-LOC
+ਸ਼ਹਿਰ	I-LOC
+ਦਾ	I-LOC
+ਇਤਿਹਾਸਕ	I-LOC
+ਕੇਂਦਰ	I-LOC
+
+ਰੀਡਿਰੈਕਟ	O
+ਯੂ.	B-ORG
+ਸੀ.	I-ORG
+ਸੰਪਦੋਰੀਆ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਪੰਜਾਬ	B-LOC
+(	I-LOC
+ਬਰਤਾਨਵੀ	I-LOC
+ਭਾਰਤ	I-LOC
+)	I-LOC
+
+ਕੋਕੋਸ	B-LOC
+(	I-LOC
+ਕੀਲਿੰਗ	I-LOC
+)	I-LOC
+ਟਾਪੂ	I-LOC
+
+ਰੀਡਿਰੈਕਟ	O
+ਐੱਸ.ਫ਼ਾਓ.	B-ORG
+ਵੈਰਦਾ	I-ORG
+ਬਰੇਮਨ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਮਹੰਤ	B-ORG
+ਗੁਰਬੰਤਾ	I-ORG
+ਦਾਸ	I-ORG
+ਸਕੂਲ	I-ORG
+ਫ਼ਾਰ	I-ORG
+ਡੈੱਫ਼	I-ORG
+&	I-ORG
+ਡਮ	I-ORG
+
+ਸ੍ਰੀ	B-LOC
+ਜੈਵਰਦਨਪੁਰਾ	I-LOC
+ਕੋਟੇ	I-LOC
+
+ਰੀਡਿਰੈਕਟ	O
+ਪੱਛਮੀ	B-ORG
+ਜ਼ੋਨ	I-ORG
+ਸੱਭਿਆਚਾਰਕ	I-ORG
+ਕੇਂਦਰ	I-ORG
+
+ਸਤਿਗੁਰੂ	B-PER
+ਰਾਮ	I-PER
+ਸਿੰਘ	I-PER
+ਚੇਅਰ	O
+==	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਵਿਕਟੋਰੀਆ	B-LOC
+(	I-LOC
+ਆਸਟ੍ਰੇਲੀਆ	I-LOC
+)	I-LOC
+
+੨੦੦੮	B-ORG
+ਓਲੰਪਿਕ	I-ORG
+ਖੇਡਾਂ	I-ORG
+ਦੇ	I-ORG
+ਵਿੱਚ	I-ORG
+ਕੁਸ਼ਤੀ	I-ORG
+–	I-ORG
+ਪੁਰਸ਼ਾਂ	I-ORG
+ਦੀ	I-ORG
+ਫ੍ਰੀਸਟਾਇਲ	I-ORG
+੮੪	I-ORG
+ਕਿਲੋਗਰਾਮ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਮਕਬੂਲ	B-PER
+ਫ਼ਿਦਾ	I-PER
+ਹੁਸੈਨ	I-PER
+
+''	O
+ਮੁਨਸ਼ਾ	B-PER
+ਸਿੰਘ	I-PER
+ਦੁਖੀ	I-PER
+''	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਖਵਾਜਾ	B-PER
+ਗ਼ੁਲਾਮ	I-PER
+ਫ਼ਰੀਦ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਪੂਏਰਤੋ	B-LOC
+ਏਸਕੋਂਦੀਦੋ	I-LOC
+,	I-LOC
+ਵਾਹਾਕਾ	I-LOC
+
+ਰੀਡਿਰੈਕਟ	O
+ਕੂਕਾ	B-LOC
+,	I-LOC
+ਪੰਜਾਬ	I-LOC
+
+ਰੀਡਿਰੈਕਟ	O
+ਗੁਰੂ	B-PER
+ਤੇਗ	I-PER
+ਬਹਾਦਰ	I-PER
+ਜੀ	I-PER
+
+ਬਾਕੂ	B-LOC
+''	O
+(	O
+Bakı	O
+)	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਗਰੇਟ	B-LOC
+ਬ੍ਰਿਟੇਨ	I-LOC
+ਦੀ	I-LOC
+ਬਾਦਸ਼ਾਹੀ	I-LOC
+
+Jangil	O
+of	O
+the	O
+Andaman	B-LOC
+and	I-LOC
+Nicobar	I-LOC
+Islands	I-LOC
+
+ਪੰਜਾਬ	B-LOC
+(	I-LOC
+ਬਰਤਾਨਵੀ	I-LOC
+ਭਾਰਤ	I-LOC
+)	I-LOC
+
+ਡੇਰਾ	B-LOC
+ਇਸਮਾਈਲ	I-LOC
+ਖ਼ਾਨ	I-LOC
+(	O
+08	O
+)	O
+
+ਜਯੋਤੀ	B-PER
+ਰਾਓ	I-PER
+ਗੋਬਿੰਦ	I-PER
+ਰਾਓ	I-PER
+ਫੂਲੇ	I-PER
+
+'	O
+''	O
+ਬਰਿਕਸ	B-LOC
+''	O
+'ਮਹਿਮਾਨ	O
+ਦੇਸ	O
+ਅਤੇ	O
+ਨੇਤਾ	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਾਂਤਾ	B-ORG
+ਮਾਰੀਆ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+(	I-ORG
+ਥੇਰੈਦੋ	I-ORG
+)	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਲੋਰੈਂਸੋ	B-PER
+ਦੇ	I-PER
+ਮੇਦੀਚੀ	I-PER
+
+ਮਹਾਰਾਜਾ	B-PER
+ਰਣਬੀਰ	I-PER
+ਸਿੰਘ	I-PER
+੧੮੫੬	O
+-	O
+੧੮੮੫	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਰਾਜਾ	B-PER
+ਮਹਿੰਦਰ	I-PER
+ਪ੍ਰਤਾਪ	I-PER
+ਸਿੰਘ	I-PER
+
+ਯਥਾਰਥਵਾਦ	B-ORG
+(	I-ORG
+ਕਲਾ	I-ORG
+)	I-ORG
+
+ਸਰਹੱਦਾਂ	B-ORG
+ਦੇ	I-ORG
+ਬਗੈਰ	I-ORG
+ਸ਼ਬਦ	I-ORG
+
+*1965	O
+ਤਖ਼ਤ	B-LOC
+ਸ੍ਰੀ	I-LOC
+ਦਮਦਮਾ	I-LOC
+ਸਾਹਿਬ	I-LOC
+''	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਤਿੰਦਰ	B-PER
+ਨਾਥ	I-PER
+ਬੋਸ	I-PER
+
+ਪ੍ਰਕਾਸ਼	B-ORG
+ਦੀ	I-ORG
+ਬਦਲਣਯੋਗ	I-ORG
+ਸਪੀਡ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਗਿਓਕ	B-PER
+ਵਿਲਹੈਲਮ	I-PER
+ਫ਼ਰੀਡਰਿਸ਼	I-PER
+ਹੇਗਲ	I-PER
+
+ਦੱਖਣੀ	B-LOC
+ਜਾਰਜੀਆ	I-LOC
+ਅਤੇ	I-LOC
+ਦੱਖਣੀ	B-LOC
+ਸੈਂਡਵਿਚ	I-LOC
+ਟਾਪੂ	I-LOC
+
+ਲਾਲੂ	B-PER
+ਪ੍ਰਸਾਦ	I-PER
+ਯਾਦਵ	I-PER
+ਦੀ	O
+ਪਤਨੀ	O
+ਹੈ।	O
+
+ਖੇਤਰੀ	O
+ਪਾਠ	O
+ਪੁਸਤਕ	O
+ਵਿਕਰੀ	O
+ਡੀਪੂ	O
+ਫ਼ਿਰੋਜ਼ਪੁਰ	B-LOC
+
+ਪਟਿਆਲਾ	B-ORG
+ਸਕੂਲ	I-ORG
+ਫ਼ਾਰ	I-ORG
+ਦ	I-ORG
+ਡੈੱਫ਼-ਬਲਾਈਂਡ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਭਾਰਤੀ	B-ORG
+ਖੇਤ	I-ORG
+ਮਜ਼ਦੂਰ	I-ORG
+ਯੂਨੀਅਨ	I-ORG
+
+'	O
+''	O
+ਵਰਨਰ	B-PER
+ਆਈਜਨਬਰਗ	I-PER
+''	O
+'	O
+
+''	O
+ਕੋਲਕਾਤਾ	B-ORG
+ਨਾਇਟ	I-ORG
+ਰਾਈਡੱਰਜ਼	I-ORG
+''	O
+'	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਐੱਮ	B-PER
+ਐੱਨ	I-PER
+ਰਾਏ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਰੈਸੀਡੈਂਸੀ	B-ORG
+ਟਾਵਰਜ਼	I-ORG
+ਚੇਨਈ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਰਿਆਲ	B-ORG
+ਮਾਦਰੀਦ	I-ORG
+ਫੁੱਟਬਾਲ	I-ORG
+ਕਲੱਬ	I-ORG
+
+ਕਾਮੀਲੋ	B-PER
+ਬੈਨਸੋ	I-PER
+,	I-PER
+ਕਾਵੂਰ	I-PER
+ਦਾ	I-PER
+ਕਾਊਂਟ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਭਾਰਤੀ	B-ORG
+ਪ੍ਰਸ਼ਾਸਕੀ	I-ORG
+ਸੇਵਾ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਕੌਮਾਂਤਰੀ	B-ORG
+ਸ਼ੁੱਧ	I-ORG
+ਅਤੇ	I-ORG
+ਵਿਹਾਰਕ	I-ORG
+ਰਸਾਇਣ	I-ORG
+ਵਿਗਿਆਨ	I-ORG
+ਸੰਘ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਪੰਡਿਤ	B-PER
+ਰਵੀ	I-PER
+ਸ਼ੰਕਰ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਏਕਤਾ	B-ORG
+ਦਾ	I-ORG
+ਬੁੱਤ	I-ORG
+
+'	O
+''	O
+ਦਿੱਲੀ	B-LOC
+''	O
+'	O
+
+**	O
+ਅਹਿਸਨ	B-PER
+ਖਾਨ	I-PER
+–	O
+''	O
+ਮੇਰੇ	B-ORG
+ਕ਼ਾਤਿਲ	I-ORG
+ਮੇਰੇ	B-ORG
+ਦਿਲਦਾਰ	I-ORG
+''	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਗ਼ੁਲਾਮ	B-PER
+ਮੁਸਤੁਫ਼ਾ	I-PER
+ਤਬੱਸੁਮ	I-PER
+
+ਯੋਸਾ	B-PER
+ਬੂਸੋਨ	I-PER
+(	O
+Yosa	O
+Buson	O
+)	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਜਾਨ	B-PER
+ਬੋਨ	I-PER
+ਜੋਵੀ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਭਾਰਤੀ	B-ORG
+ਰਿਜ਼ਰਵ	I-ORG
+ਬੈਂਕ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਗਿਓਕ	B-PER
+ਵਿਲਹੈਲਮ	I-PER
+ਫ਼ਰੀਡਰਿਸ਼	I-PER
+ਹੇਗਲ	I-PER
+
+ਫ਼ਤਹਿਗੜ੍ਹ	B-LOC
+ਸਾਹਿਬ	I-LOC
+ਜ਼ਿਲ੍ਹਾ	I-LOC
+
+ਰੀਡਿਰੈਕਟ	O
+ਤੇਲ	B-ORG
+ਅਤੇ	I-ORG
+ਕੁਦਰਤੀ	I-ORG
+ਗੈਸ	I-ORG
+ਕਾਰਪੋਰੇਸ਼ਨ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਸੇਗੋਵੀਆ	B-ORG
+ਵੱਡਾ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+
+ਪੰਜਾਬ	B-LOC
+(	I-LOC
+ਬਰਤਾਨਵੀ	I-LOC
+ਭਾਰਤ	I-LOC
+)	I-LOC
+
+ਤਖ਼ਤ	B-ORG
+ਸ੍ਰੀ	I-ORG
+ਪਟਨਾ	I-ORG
+ਸਾਹਿਬ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਖਵਾਜਾ	B-PER
+ਗ਼ੁਲਾਮ	I-PER
+ਫ਼ਰੀਦ	I-PER
+
+'	O
+''	O
+ਅਨੰਤਨਾਗ	B-LOC
+''	O
+'	O
+
+'	O
+''	O
+ਪਨਾਮਾ	B-LOC
+ਸ਼ਹਿਰ	I-LOC
+''	O
+'	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਆਸਟਰੇਲੀਆ	B-LOC
+(	I-LOC
+ਮਹਾਂਦੀਪ	I-LOC
+)	I-LOC
+
+ਰੀਡਿਰੈਕਟ	O
+ਨੁਸਰਤ	B-PER
+ਫ਼ਤਿਹ	I-PER
+ਅਲੀ	I-PER
+ਖ਼ਾਨ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਬੋਸਨੀਆ	B-LOC
+ਅਤੇ	I-LOC
+ਹਰਜ਼ੇਗੋਵੀਨਾ	I-LOC
+
+ਰੀਡਿਰੈਕਟ	O
+ਸੈਨ	B-ORG
+ਫਰਾਂਸਿਸਕੋ	I-ORG
+ਫ਼ੈਰੀ	I-ORG
+ਬਿਲਡਿੰਗ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਉਐਸਕਾ	B-ORG
+ਵੱਡਾ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਜਾਨ	B-PER
+ਫ਼ਰੇਜ਼ਰ	I-PER
+(	I-PER
+ਟੈਨਿਸ	I-PER
+ਖਿਡਾਰੀ	I-PER
+)	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਪੰਜਾਬ	B-LOC
+,	I-LOC
+ਭਾਰਤ	I-LOC
+
+ਖੇਤਰੀ	O
+ਪਾਠ	O
+ਪੁਸਤਕ	O
+ਵਿਕਰੀ	O
+ਡੀਪੂ	O
+ਹੁਸ਼ਿਆਰਪੁਰ	B-LOC
+
+ਰੀਡਿਰੈਕਟ	O
+ਇੰਦਰਪ੍ਰਸਥ	B-ORG
+ਸੂਚਨਾ	I-ORG
+ਤਕਨਾਲੋਜੀ	I-ORG
+ਇੰਸਟੀਚਿਊਟ	I-ORG
+
+'	O
+''	O
+ਨਜੀਬ	B-PER
+ਮਹਿਫ਼ੂਜ਼	I-PER
+''	O
+'	O
+
+ਯਥਾਰਥਵਾਦ	B-ORG
+(	I-ORG
+ਕਲਾ	I-ORG
+)	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਮੋਹਨਦਾਸ	B-PER
+ਕਰਮਚੰਦ	I-PER
+ਗਾਂਧੀ	I-PER
+
+'	O
+''	O
+ਮੁੱਖ	B-ORG
+ਮੰਤਰੀ	I-ORG
+ਦਾ	O
+ਨਾਮ	O
+''	O
+'	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਗ੍ਰੈਂਡ	B-ORG
+ਯੂਨੀਫਾਈਡ	I-ORG
+ਥਿਊਰੀ	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਬਠਿੰਡਾ	B-ORG
+(	I-ORG
+ਲੋਕ	I-ORG
+ਸਭਾ	I-ORG
+ਚੋਣ-ਹਲਕਾ	I-ORG
+)	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਾਂਤਾ	B-ORG
+ਮਾਰੀਆ	I-ORG
+ਦਾ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+(	I-ORG
+ਲਿਬੇਞਾ	I-ORG
+)	I-ORG
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਾਨ	B-ORG
+ਖ਼ੋਸੇ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+
+ਫ਼ਵਾਦ	B-ORG
+ਖਾਨ	I-ORG
+as	O
+ਵਿਰਾਟ	B-PER
+ਕੋਹਲੀ	I-PER
+
+ਰੀਡਿਰੈਕਟ	O
+ਸਾਂਤਾ	B-ORG
+ਮਾਰੀਆ	I-ORG
+ਗਿਰਜਾਘਰ	I-ORG
+(	I-ORG
+ਲੀਮਾਨਿਸ	I-ORG
+)	I-ORG
+
+ਅਹਿਸਨ	B-PER
+ਖਾਨ	I-PER
+(	O
+ਆਰੇਜ਼	O
+)	O
+
+ਗੁਰੂ	B-PER
+ਹਰਿਰਾਇ	I-PER
+ਜੀ	I-PER
+
+ਸ਼ਿਨ	B-LOC
+ਰਾਜਵੰਸ਼	I-LOC
+ਦਾ	O
+ਅੰਤਿਮ	O
+ਸਾਲ।	O
+
+ਮੁੱਖ	B-ORG
+ਮੰਤਰੀ	I-ORG
+(	O
+ਆਪਣੇ	O
+ਪ੍ਰਾਂਤ	O
+ਵਿੱਚ	O
+)	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਗੋਵਿੰਦ	B-PER
+ਵੱਲਭ	I-PER
+ਪੰਤ	I-PER
+
+ਸ਼੍ਰੋਮਣੀ	B-ORG
+ਗੁਰਦੁਆਰਾ	I-ORG
+ਪ੍ਰਬੰਧਕ	I-ORG
+ਕਮੇਟੀ	I-ORG
+
+ਬਾਵਾ	B-PER
+ਬਲਵੰਤ	I-PER
+(	O
+1924-1972	O
+)	O
+-	O
+===	O
+
+ਰੀਡਿਰੈਕਟ	O
+ਪਾਰੀਜਾਤ	B-PER
+(	I-PER
+ਲੇਖਕ	I-PER
+)	I-PER
+
+ਮੈਂ	O
+ਥੋੜੀ-ਬਹੁਤ	O
+ਪੰਜਾਬੀ	B-PER
+ਬੋਲਦਾ	O
+ਹਾਂ।	O
