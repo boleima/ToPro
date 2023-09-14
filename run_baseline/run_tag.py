@@ -48,24 +48,29 @@ from transformers import (
   XLMTokenizer,
   XLMRobertaConfig,
   XLMRobertaTokenizer,
-  XLMRobertaForTokenClassification
+  XLMRobertaForTokenClassification,
+  MT5Config,
+  MT5Tokenizer,
+  MT5ForSequenceClassification
 )
 #from xlm import XLMForTokenClassification
 
 
 logger = logging.getLogger(__name__)
 
-ALL_MODELS = sum(
-  (tuple(conf.pretrained_config_archive_map.keys())
-    for conf in (BertConfig, XLMConfig, XLMRobertaConfig)),
-  ()
-)
+# ALL_MODELS = sum(
+#   (tuple(conf.pretrained_config_archive_map.keys())
+#     for conf in (BertConfig, XLMConfig, XLMRobertaConfig)),
+#   ()
+# )
+ALL_MODELS='None'
 #ALL_MODELS=tuple(BERT_PRETRAINED_CONFIG_ARCHIVE_MAP)
 
 MODEL_CLASSES = {
   "bert": (BertConfig, BertForTokenClassification, BertTokenizer),
   #"xlm": (XLMConfig, XLMForTokenClassification, XLMTokenizer),
   "xlmr": (XLMRobertaConfig, XLMRobertaForTokenClassification, XLMRobertaTokenizer),
+  'mt5': (MT5Config, MT5ForSequenceClassification, MT5Tokenizer)
 }
 
 
