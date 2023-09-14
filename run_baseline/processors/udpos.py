@@ -36,7 +36,8 @@ class UdposProcessor(DataProcessor):
         """See base class."""
         examples = []
         for lg in language.split(','):
-            data_file = os.path.join(data_dir, lg, "{}.{}".format(split, model))
+            # data_file = os.path.join(data_dir, lg, "{}.{}".format(split, model))
+            data_file = os.path.join(data_dir, "{}-{}.tsv".format(split, lg))
             with open(data_file, encoding="utf-8") as f:
                 words=[]
                 labels=[]

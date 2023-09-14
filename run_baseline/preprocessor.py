@@ -22,7 +22,7 @@ class Preprocessor(ABC):
         self.tokenizer = tokenizer
         self.label_list = label_list
         self.max_seq_length = max_seq_length
-        self.pvp = PVPS[task_name](tokenizer, label_list, max_seq_length, pattern_id, verbalizer_file) # pvp stands for patter verbalizer pair
+        self.pvp = PVPS[task_name](tokenizer, label_list, max_seq_length, pattern_id, verbalizer_file) # pvp stands for pattern verbalizer pair
         self.label_map = {label: i for i, label in enumerate(label_list)}
         # convert real label to label index
 
@@ -92,3 +92,48 @@ class MLMPreprocessor(Preprocessor):
         return InputFeatures(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids,
                              label=label, mlm_labels=mlm_labels, idx=example.guid)
 
+
+class LLMPreprocessor(Preprocessor):
+    """
+    Preprocess for LLMs
+    """
+    def get_input_features(self, example: InputExample, labelled: bool, priming_idx: int = -1, priming: bool = False,
+                           num_priming: int=0, conc: bool = False, **kwargs) -> InputFeatures:
+        """Convert the given example into a set of input features"""
+
+        if priming:
+            priming_data = example.meta['priming_data'][:num_priming]  # type of priming_data: List[InputExample]
+            if conc:
+                priming_input_ids = []
+                max_length = int(self.max_seq_length / (num_priming + 1))
+                for priming_example in priming_data:
+                    priming_input_ids += \
+                        self.pvp.encode(priming_example, priming=True, labeled=True, max_length=max_length)
+
+            else:
+                max_length = int(self.max_seq_length / 2)
+                priming_example = priming_data[priming_idx]
+                priming_input_ids = self.pvp.encode(priming_example, priming=True, labeled=True, max_length=max_length)
+
+            input_ids = priming_input_ids + self.pvp.encode(example, max_length=max_length)
+
+        else:
+            input_ids = self.pvp.encode(example)
+
+
+        attention_mask = [1] * len(input_ids)
+        padding_length = self.max_seq_length - len(input_ids)
+
+        if padding_length < 0:
+            raise ValueError(f"Maximum sequence length is too small, got {len(input_ids)} input ids.")
+
+        input_ids = input_ids + ([self.tokenizer.pad_token_id] * padding_length)
+        attention_mask = attention_mask + ([0] * padding_length)
+
+        assert len(input_ids) == self.max_seq_length
+        assert len(attention_mask) == self.max_seq_length
+
+        label = self.label_map[example.label] if example.label is not None else -100  # convert label to label index
+
+        return InputFeatures(input_ids=input_ids, attention_mask=attention_mask,
+                             label=label, idx=example.guid)

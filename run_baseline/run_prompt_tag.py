@@ -41,19 +41,25 @@ from transformers import (
     XLMTokenizer,
     XLMRobertaConfig,
     XLMRobertaTokenizer,
-    XLMRobertaForMaskedLM,
+    XLMRobertaForMaskedLM, 
+    MT5Config, 
+    MT5Tokenizer, 
+    MT5ForConditionalGeneration,
+    BloomConfig, 
+    BloomTokenizerFast, 
+    BloomForCausalLM,
     get_linear_schedule_with_warmup,
     BERT_PRETRAINED_CONFIG_ARCHIVE_MAP,
     XLM_PRETRAINED_CONFIG_ARCHIVE_MAP,
     XLM_ROBERTA_PRETRAINED_CONFIG_ARCHIVE_MAP
 )
 
-from processors.xnli import XnliProcessor
-from processors.pawsx import PawsxProcessor
-from processors.amazon import AmazonProcessor
+# from processors.xnli import XnliProcessor
+# from processors.pawsx import PawsxProcessor
+# from processors.amazon import AmazonProcessor
 from processors.udpos import UdposProcessor
 from processors.panx import PanxProcessor
-from preprocessor import MLMPreprocessor
+from preprocessor import MLMPreprocessor, LLMPreprocessor
 from processors.retrieve import add_priming_data
 
 try:
@@ -77,18 +83,19 @@ MODEL_CLASSES = {
     "bert": (BertConfig, BertForMaskedLM, BertTokenizer),
     "xlm": (XLMConfig, XLMForSequenceClassification, XLMTokenizer),
     "xlmr": (XLMRobertaConfig, XLMRobertaForMaskedLM, XLMRobertaTokenizer),
+    "bloom": (BloomConfig, BloomForCausalLM, BloomTokenizerFast),
+    'mt0': (MT5Config, MT5ForConditionalGeneration, MT5Tokenizer),
 }
 
 PROCESSORS = {
-    'xnli': XnliProcessor,
-    'pawsx': PawsxProcessor,
-    'amazon': AmazonProcessor,
+    # 'xnli': XnliProcessor,
+    # 'pawsx': PawsxProcessor,
+    # 'amazon': AmazonProcessor,
     'udpos':UdposProcessor,
-    'panx':PanxProcessor
+    'panx':PanxProcessor,
+    'udpos-llm': UdposProcessor,
+    'panx-llm': PanxProcessor,
 }
-
-
-
 
 def compute_metrics(preds, labels):
     scores = {
@@ -146,12 +153,12 @@ def train(args, train_dataset, model, tokenizer, preprocessor, label_list, lang2
         optimizer.load_state_dict(torch.load(os.path.join(args.model_name_or_path, "optimizer.pt")))
         scheduler.load_state_dict(torch.load(os.path.join(args.model_name_or_path, "scheduler.pt")))
 
-    if args.fp16:
-        try:
-            from apex import amp
-        except ImportError:
-            raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
-        model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
+    # if args.fp16:
+    #     try:
+    #         from apex import amp
+    #     except ImportError:
+    #         raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
+    #     model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
 
     # multi-gpu training (should be after apex fp16 initialization)
     if args.n_gpu > 1:
@@ -256,7 +263,7 @@ def train(args, train_dataset, model, tokenizer, preprocessor, label_list, lang2
 
                     # Only evaluate on single GPU otherwise metrics may not average well
                     if (args.local_rank == -1 and args.evaluate_during_training):
-                        results = evaluate(args, model, preprocessor, split=args.train_split, language=args.train_language,
+                        results = evaluate(args, model, preprocessor, tokenizer, split=args.train_split, language=args.train_language,
                                            lang2id=lang2id)
                         for key, value in results.items():
                             tb_writer.add_scalar("eval_{}".format(key), value, global_step)
@@ -268,7 +275,7 @@ def train(args, train_dataset, model, tokenizer, preprocessor, label_list, lang2
                         total = total_correct = 0.0
                         with open(output_predict_file, 'a') as writer:
                             writer.write('\n======= Predict using the model from checkpoint-{}:\n'.format(global_step))
-                            result = evaluate(args, model, preprocessor, split=args.dev_split, language=args.train_language,
+                            result = evaluate(args, model, preprocessor, tokenizer, split=args.dev_split, language=args.train_language,
                                                 lang2id=lang2id, prefix='checkpoint-' + str(global_step))
                             avg_f1 = result['f1']
                             writer.write('{}={}\n'.format(args.train_language, result['f1']))
@@ -337,7 +344,7 @@ def train(args, train_dataset, model, tokenizer, preprocessor, label_list, lang2
     return global_step, tr_loss, best_score, best_checkpoint
 
 
-def evaluate(args, model, preprocessor, split='train', language='en', lang2id=None, prefix=""):
+def evaluate(args, model, preprocessor, tokenizer, split='train', language='en', lang2id=None, prefix=""):
     """Evalute the model."""
     eval_task_names = (args.task_name,)
     eval_outputs_dirs = (args.output_dir,)
@@ -356,6 +363,7 @@ def evaluate(args, model, preprocessor, split='train', language='en', lang2id=No
             # Note that DistributedSampler samples randomly
             eval_sampler = SequentialSampler(eval_dataset)
             eval_dataloader = DataLoader(eval_dataset, sampler=eval_sampler, batch_size=args.eval_batch_size)
+        
 
             # multi-gpu eval
             model = model.to('cuda:0')
@@ -372,7 +380,10 @@ def evaluate(args, model, preprocessor, split='train', language='en', lang2id=No
             for batch in tqdm(eval_dataloader, desc="Evaluating"):
                 model.eval()
                 batch = tuple(t.to(args.device) for t in batch)
-                inputs = {"input_ids": batch[0], "attention_mask": batch[1], "token_type_ids": batch[2], "labels": batch[3],
+                if 'llm' in args.task_name:
+                    inputs = {"input_ids": batch[0], "attention_mask": batch[1], "labels": batch[2], 'idx': batch[3]}
+                else:
+                    inputs = {"input_ids": batch[0], "attention_mask": batch[1], "token_type_ids": batch[2], "labels": batch[3],
                           "mlm_labels": batch[4], 'idx': batch[5]}
                 labels = inputs['labels']
                 indices = inputs['idx']
@@ -386,7 +397,8 @@ def evaluate(args, model, preprocessor, split='train', language='en', lang2id=No
                     # if args.model_type == "xlm":
                     #     inputs["langs"] = batch[4]
                     # outputs = model(**inputs)
-                    logits = mlm_eval_step(inputs, preprocessor, model)
+                    logits = llm_eval_step(inputs, preprocessor, model, tokenizer, args.model_type) if 'llm' in args.task_name \
+                            else mlm_eval_step(inputs, preprocessor, model, args.model_type) 
                     # tmp_eval_loss, logits = outputs[:2]
                 #
                 #     eval_loss += tmp_eval_loss.mean().item()
@@ -527,17 +539,20 @@ def load_and_cache_examples(args, task, preprocessor, split='train', language='e
         # Convert to Tensors and build dataset
     all_input_ids = torch.tensor([f.input_ids for f in features], dtype=torch.long)
     all_attention_mask = torch.tensor([f.attention_mask for f in features], dtype=torch.long)
-    all_token_type_ids = torch.tensor([f.token_type_ids for f in features], dtype=torch.long)
-    all_mlm_labels = torch.tensor([f.mlm_labels for f in features], dtype=torch.long)
     all_idx = torch.tensor([int(f.idx.split('-')[-1]) for f in features], dtype=torch.long)
     if output_mode == "classification":
         all_labels = torch.tensor([f.label for f in features], dtype=torch.long)
     else:
         raise ValueError("No other `output_mode` for {}.".format(args.task_name))
+    if 'llm' not in args.task_name:
+        all_token_type_ids = torch.tensor([f.token_type_ids for f in features], dtype=torch.long)
+        all_mlm_labels = torch.tensor([f.mlm_labels for f in features], dtype=torch.long)
 
     if args.model_type == 'xlm':
         all_langs = torch.tensor([f.langs for f in features], dtype=torch.long)
         dataset = TensorDataset(all_input_ids, all_attention_mask, all_token_type_ids, all_labels, all_langs)
+    elif 'llm' in args.task_name:
+        dataset = TensorDataset(all_input_ids, all_attention_mask, all_labels, all_idx)
     else:
         dataset = TensorDataset(all_input_ids, all_attention_mask, all_token_type_ids, all_labels, all_mlm_labels,
                                 all_idx)
@@ -557,9 +572,9 @@ def mlm_train_step(batch, preprocessor, model, label_list):
     loss = torch.nn.CrossEntropyLoss()(prediction_scores.view(-1, len(label_list)), labels.view(-1))
     return loss
 
-def mlm_eval_step(batch, preprocessor, model):
+def mlm_eval_step(batch, preprocessor, model, model_type):
     """Perform an MLM evaluation step."""
-    inputs = generate_default_inputs(batch)
+    inputs = generate_default_inputs(batch, model_type)
     outputs = model(**inputs)
 
     return preprocessor.pvp.convert_mlm_logits_to_cls_logits(batch['mlm_labels'], outputs[0])
@@ -569,6 +584,21 @@ def generate_default_inputs(batch, model_type='bert'):
     inputs = {'input_ids': batch['input_ids'], 'attention_mask': batch['attention_mask']}
     if model_type in ['bert', 'xlnet']:
         inputs['token_type_ids'] = batch['token_type_ids']
+    return inputs
+
+def llm_eval_step(batch, preprocessor, model, tokenizer, model_type):
+    """Perform an LLM evaluation step."""
+    inputs = generate_default_inputs_llm(batch, tokenizer, model_type)
+    outputs = model(**inputs)
+    next_token_logits = outputs.logits[:, -1, :]
+    
+    return preprocessor.pvp.get_verbalizer_logits(next_token_logits)
+
+def generate_default_inputs_llm(batch, tokenizer, model_type):
+    inputs = {'input_ids': batch['input_ids'], 'attention_mask': batch['attention_mask']}
+    if model_type in ['mt0']:
+        tokenizer.add_special_tokens({"bos_token": "<s>"})
+        inputs['decoder_input_ids'] = torch.tensor([[tokenizer.bos_token_id]]*batch['input_ids'].shape[0]).to(batch['input_ids'].device)
     return inputs
 
 
@@ -725,7 +755,7 @@ def main():
     parser.add_argument("--local_rank", type=int, default=-1, help="For distributed training: local_rank")
     parser.add_argument("--server_ip", type=str, default="", help="For distant debugging.")
     parser.add_argument("--server_port", type=str, default="", help="For distant debugging.")
-    parser.add_argument('--pattern_id', type=int, default='1', help='Prompt template')
+    parser.add_argument('--pattern_id', type=int, default='0', help='Prompt template')
 
     # arguments for few-shot finetuning
     parser.add_argument("--num_sample", type=int, default=-1, help='define the number of shots for few-shot finetuning')
@@ -746,6 +776,8 @@ def main():
     parser.add_argument('--retrieval_method', type=str, default='sentence_transformer',
                         help='which retrieval method to use')
     parser.add_argument('--random_retrieval', action='store_true', help='whether to use random retrieval')
+    
+    parser.add_argument("--hf_token", type=str, default="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", help="used to have access to some LLMs on HF.")
 
     args = parser.parse_args()
 
@@ -826,14 +858,21 @@ def main():
         num_labels=num_labels,
         finetuning_task=args.task_name,
         cache_dir=args.cache_dir if args.cache_dir else None,
+        token=args.hf_token,
     )
     logger.info("config = {}".format(config))
 
-    tokenizer = tokenizer_class.from_pretrained(
-        args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
-        do_lower_case=args.do_lower_case,
-        cache_dir=args.cache_dir if args.cache_dir else None,
-    )
+    if 'llm' not in args.task_name:
+        tokenizer = tokenizer_class.from_pretrained(
+            args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
+            do_lower_case=args.do_lower_case,
+            cache_dir=args.cache_dir if args.cache_dir else None,
+        )
+    else:
+        tokenizer = tokenizer_class.from_pretrained(
+            args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
+            cache_dir=args.cache_dir if args.cache_dir else None,
+        )        
 
     lang2id = config.lang2id if args.model_type == "xlm" else None
     logger.info("lang2id = {}".format(lang2id))
@@ -843,7 +882,11 @@ def main():
         torch.distributed.barrier()
     logger.info("Training/evaluation parameters %s", args)
 
-    preprocessor = MLMPreprocessor(tokenizer, label_list, args.max_seq_length, args.task_name, args.pattern_id)
+    if 'llm' in args.task_name:
+        args.pattern_id = 1 if args.model_type == 'bloom' else 0
+        preprocessor = LLMPreprocessor(tokenizer, label_list, args.max_seq_length, args.task_name, args.pattern_id)
+    else:
+        preprocessor = MLMPreprocessor(tokenizer, label_list, args.max_seq_length, args.task_name, args.pattern_id)
 
     # Training
     if args.do_train:
@@ -862,6 +905,8 @@ def main():
                 config=config,
                 cache_dir=args.cache_dir if args.cache_dir else None,
             )
+        if args.fp16:
+            model = model.half()
         model.to(args.device)
 
         if args.train_language=='en':
@@ -900,6 +945,8 @@ def main():
         # Load a trained model and vocabulary that you have fine-tuned
         model = model_class.from_pretrained(args.output_dir)
         tokenizer = tokenizer_class.from_pretrained(args.output_dir)
+        if args.fp16:
+            model = model.half()
         model.to(args.device)
 
     # Evaluation
@@ -927,8 +974,10 @@ def main():
             prefix = checkpoint.split("/")[-1] if checkpoint.find("checkpoint") != -1 else ""
 
             model = model_class.from_pretrained(checkpoint)
+            if args.fp16:
+                model = model.half()
             model.to(args.device)
-            result = evaluate(args, model, preprocessor, split='dev', language=args.train_language, lang2id=lang2id,
+            result = evaluate(args, model, preprocessor, tokenizer, split='dev', language=args.train_language, lang2id=lang2id,
                               prefix=prefix)
             if result['f1'] > best_score:
                 best_checkpoint = checkpoint
@@ -945,9 +994,15 @@ def main():
 
     # Prediction
     if args.do_predict and args.local_rank in [-1, 0]:
-        tokenizer = tokenizer_class.from_pretrained(
-            best_checkpoint if best_checkpoint else args.model_name_or_path, do_lower_case=args.do_lower_case)
-        model = model_class.from_pretrained(best_checkpoint if best_checkpoint else args.model_name_or_path)
+        if 'llm' not in args.task_name:
+            tokenizer = tokenizer_class.from_pretrained(
+                best_checkpoint if best_checkpoint else args.model_name_or_path, do_lower_case=args.do_lower_case)
+        else:
+            tokenizer = tokenizer_class.from_pretrained(
+                best_checkpoint if best_checkpoint else args.model_name_or_path)
+        model = model_class.from_pretrained(best_checkpoint if best_checkpoint else args.model_name_or_path, token=args.hf_token)
+        if args.fp16:
+            model = model.half()
         model.to(args.device)
         output_predict_file = os.path.join(args.output_dir, args.test_split + '_results.txt')
         total = total_correct = 0.0
@@ -955,7 +1010,7 @@ def main():
             writer.write('======= Predict using the model from {} for {}:\n'.format(best_checkpoint, args.test_split))
             for language in args.predict_languages.split(','):
                 output_file = os.path.join(args.output_dir, 'test-{}.tsv'.format(language))
-                result = evaluate(args, model, preprocessor, split=args.test_split, language=language, lang2id=lang2id,
+                result = evaluate(args, model, preprocessor, tokenizer, split=args.test_split, language=language, lang2id=lang2id,
                                   prefix='best_checkpoint' if args.init_checkpoint else args.model_name_or_path)
                 writer.write('{}={}\n'.format(language, result['f1']))
                 logger.info('{}={}'.format(language, result['f1']))
@@ -974,7 +1029,7 @@ def main():
             writer.write('======= Predict using the model from {}:\n'.format(args.init_checkpoint))
             for language in args.predict_languages.split(','):
                 output_file = os.path.join(args.output_dir, 'dev-{}.tsv'.format(language))
-                result = evaluate(args, model, preprocessor, split='dev', language=language, lang2id=lang2id,
+                result = evaluate(args, model, preprocessor, tokenizer, split='dev', language=language, lang2id=lang2id,
                                   prefix='best_checkpoint')
                 writer.write('{}={}\n'.format(language, result['f1']))
                 total += result['num']
