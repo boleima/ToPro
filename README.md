@@ -12,15 +12,18 @@ Our experiments on multilingual NER (PAN-X) and POS tagging (UDPOS) datasets dem
 
 Overall, the performance improvement of Topro shows that it could be a potential novel benchmarking method for sequence labeling tasks.
 
+
 ## Content
 
 - `run_baseline`: py scripts for baselines and Topro
 - `scripts`: sh scripts to run the models
 
-## run
-task: udpos, panx
-model: bert-base-multilingual-cased, xlm-roberta-base, mt5-base
-method: topro, vanilla, pt
+
+## Run
+task: udpos, panx  
+model: bert-base-multilingual-cased, xlm-roberta-base, mt5-base  
+method: topro, vanilla, pt  
+
 `sh scripts/train.sh [task] [model] [method]`
 
 
