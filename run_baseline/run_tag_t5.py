@@ -33,7 +33,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from torch.utils.data import RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
-from utils_tag import convert_examples_to_features, convert_examples_to_features_t5
+from utils_tag_t5 import convert_examples_to_features_t5
 from utils_tag import get_labels
 from utils_tag import read_examples_from_file
 from metrics import span_f1
