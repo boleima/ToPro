@@ -17,4 +17,10 @@ Overall, the performance improvement of Topro shows that it could be a potential
 - `run_baseline`: py scripts for baselines and Topro
 - `scripts`: sh scripts to run the models
 
+## run
+task: udpos, panx
+model: bert-base-multilingual-cased, xlm-roberta-base, mt5-base
+method: topro, vanilla, pt
+`sh scripts/train.sh [task] [model] [method]`
+
 
