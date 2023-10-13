@@ -15,14 +15,14 @@ Overall, the performance improvement of Topro shows that it could be a potential
 
 ## Content
 
-- `run_baseline`: py scripts for baselines and Topro
+- `run_baseline`: py scripts for Vanilla and Topro. The code for Prompt-Tuning baseline [Tu et al. 2022](https://arxiv.org/pdf/2210.12360.pdf) can be be accessed directly from their orinial repository: [https://github.com/salesforce/MPT](https://github.com/salesforce/MPT).
 - `scripts`: sh scripts to run the models
 
 
 ## Run
 task: `udpos`, `panx`  
 model: `bert-base-multilingual-cased`, `xlm-roberta-base`, `mt5-base`  
-method: `topro`, `vanilla`, `pt`  
+method: `topro`, `vanilla`, [pt](https://github.com/salesforce/MPT)  
 
 ``
 sh scripts/train.sh [task] [model] [method]
