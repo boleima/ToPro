@@ -20,9 +20,9 @@ Overall, the performance improvement of Topro shows that it could be a potential
 
 
 ## Run
-task: udpos, panx  
-model: bert-base-multilingual-cased, xlm-roberta-base, mt5-base  
-method: topro, vanilla, pt  
+task: `udpos`, `panx`  
+model: `bert-base-multilingual-cased`, `xlm-roberta-base`, `mt5-base`  
+method: `topro`, `vanilla`, `pt`  
 
 ``
 sh scripts/train.sh [task] [model] [method]
