@@ -29,7 +29,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from torch.utils.data import RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
-from metrics_prompt import span_f1
+from metrics import span_f1
 
 from transformers import (
     WEIGHTS_NAME,
