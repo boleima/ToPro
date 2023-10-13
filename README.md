@@ -13,19 +13,19 @@ Our experiments on multilingual NER (PAN-X) and POS tagging (UDPOS) datasets dem
 Overall, the performance improvement of Topro shows that it could be a potential novel benchmarking method for sequence labeling tasks.
 
 ## Dataset
-The two datasets (UDPOS and PAN-X) of current study are based on the XTREME benchmark ([Hu et al. 2020](https://arxiv.org/pdf/2003.11080.pdf)). The datasets can be accessed directly from this repository [https://github.com/google-research/xtreme](https://github.com/google-research/xtreme).
+The two datasets (UDPOS and PAN-X) of the current study are based on the XTREME benchmark ([Hu et al. 2020](https://arxiv.org/pdf/2003.11080.pdf)). The datasets can be accessed directly from this repository [https://github.com/google-research/xtreme](https://github.com/google-research/xtreme).
 
 
 ## Content
 
-- `run_baseline`: py scripts for Vanilla and Topro. The code for Prompt-Tuning baseline ([Tu et al. 2022](https://arxiv.org/pdf/2210.12360.pdf)) is available in their orinial repository: [https://github.com/salesforce/MPT](https://github.com/salesforce/MPT).
+- `run_baseline`: py scripts for Vanilla and Topro. The code for the Prompt-Tuning (PT) baseline ([Tu et al. 2022](https://arxiv.org/pdf/2210.12360.pdf)) is available in their original repository: [https://github.com/salesforce/MPT](https://github.com/salesforce/MPT).
 - `scripts`: sh scripts to run the models
 
 
 ## Run
 task: `udpos`, `panx`  
 model: `bert-base-multilingual-cased`, `xlm-roberta-base`, `mt5-base`  
-method: `topro`, `vanilla`, [pt](https://github.com/salesforce/MPT)  
+method: `topro`, `vanilla`, [PT](https://github.com/salesforce/MPT)  
 
 - #### run ToPro and baseline training: 
 ```
