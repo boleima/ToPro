@@ -27,8 +27,14 @@ task: `udpos`, `panx`
 model: `bert-base-multilingual-cased`, `xlm-roberta-base`, `mt5-base`  
 method: `topro`, `vanilla`, [pt](https://github.com/salesforce/MPT)  
 
-``
-sh scripts/train.sh [task] [model] [method]
-``
+- #### run ToPro and baseline training: 
+    ``
+    source scripts/train.sh [task] [model] [method]
+    ``
+
+- #### run ToPro evaluation on LLM: 
+    ``
+    source scripts/eval_llm.sh [task]
+    ``
 
 
