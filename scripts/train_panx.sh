@@ -1,4 +1,5 @@
 #!/bin/bash
+# script modified based on:
 # Copyright 2020 Google and DeepMind.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,13 +22,11 @@ OUT_DIR=${4:-"$REPO/outputs/"}
 
 TASK='panx'
 export CUDA_VISIBLE_DEVICES=$GPU
-#LANGS="ar,he,vi,id,jv,ms,tl,eu,ml,ta,te,af,nl,en,de,el,bn,hi,mr,ur,fa,fr,it,pt,es,bg,ru,ja,ka,ko,th,sw,yo,my,zh,kk,tr,et,fi,hu,qu,pl,uk,az,lt,pa,gu,ro"
 LANGS='en,af,ar,az,bg,bn,de,el,es,et,eu,fa,fi,fr,gu,he,hi,hu,id,it,ja,jv,ka,kk,ko,lt,ml,mr,ms,my,nl,pa,pl,pt,qu,ro,ru,sw,ta,te,th,tl,tr,uk,ur,vi,yo,zh'
-NUM_EPOCHS=5 #10
+NUM_EPOCHS=5
 MAX_LENGTH=128
-LR=1e-5 #2e-5
-#SEEDS=(10 42 421 520 1218)
-SEEDS=(1218)
+LR=1e-5
+SEEDS=(10 42 421 520 1218)
 
 LC=""
 if [ $MODEL == "bert-base-multilingual-cased" ]; then
@@ -47,14 +46,9 @@ else
   GRAD_ACC=4
 fi
 
-# +
-#PERCENTAGE=0.01
-#OUTPUT_DIR="$OUT_DIR/$TASK/${MODEL}-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGTH}-Percentage${PERCENTAGE}/"
-
 OUTPUT_DIR="$OUT_DIR/$TASK/${MODEL}-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGTH}/"
-# -
 
-runfewshot(){
+run(){
     DATA_DIR=$DATA_DIR/$TASK/${TASK}_processed_maxlen${MAX_LENGTH}/
     RESULT_FILE="results_${TASK}_bl_full_${1}.csv"
     mkdir -p $OUTPUT_DIR
@@ -88,8 +82,6 @@ runfewshot(){
 
 for SEED in "${SEEDS[@]}"
 do
-  runfewshot $SEED
+  run $SEED
 done
 
-# +
-#--labels $DATA_DIR/labels.txt \
