@@ -444,7 +444,7 @@ def evaluate(args, model, preprocessor, tokenizer, split='train', language='en',
                 
 
         # if output_file:
-        #     agger.info("***** Save prediction ******")
+        #     logger.info("***** Save prediction ******")
         #     with open(output_file, 'w') as fout:
         #         pad_token_id = tokenizer.pad_token_id
         #         sentences = sentences.astype(int).tolist()
@@ -460,10 +460,109 @@ def evaluate(args, model, preprocessor, tokenizer, split='train', language='en',
         #                 fout.write(str(p) + '\n')
         #             else:
         #                 fout.write('{}\t{}\t{}\n'.format(p, l, s))
-        logger.info("***** Eval results {} {} *****".format(prefix, language))
-        logger.info(f"f1 = {results['f1']}")
+        # logger.info("***** Eval results {} {} *****".format(prefix, language))
+        # logger.info(f"f1 = {results['f1']}")
         # for key in sorted(results.keys()):
         #     logger.info("  %s = %s", key, str(results[key]))
+
+    return results
+
+
+def evaluate_direct(args, model, preprocessor, tokenizer, split='train', language='en', 
+                    lang2id=None, prefix="", output_file=None, label_list=None):
+    """Evalute the model."""
+    eval_task_names = (args.task_name,)
+    eval_outputs_dirs = (args.output_dir,)
+
+    total_results = {}
+    for eval_task, eval_output_dir in zip(eval_task_names, eval_outputs_dirs):
+        results = {}
+        for idx in range(args.num_priming):
+            # Make sure only the first process in distributed training process the
+            # dataset, and the others will use the cache
+            if args.local_rank not in [-1, 0] and not evaluate:
+                torch.distributed.barrier()
+
+            processor = PROCESSORS[eval_task]()
+
+            logger.info("Creating features from dataset file at %s", args.data_dir)
+            label_list = processor.get_labels()
+            if split == 'train':
+                examples = processor.get_train_examples(args.data_dir, args.model_name_or_path, language, args.num_sample)
+            elif split == 'translate-train':
+                examples = processor.get_translate_train_examples(args.data_dir, language)
+            elif split == 'translate-test':
+                examples = processor.get_translate_test_examples(args.data_dir, language)
+            elif split == 'dev':
+                examples = processor.get_dev_examples(args.data_dir, args.model_name_or_path, language)
+            elif split == 'pseudo_test':
+                examples = processor.get_pseudo_test_examples(args.data_dir, language)
+            else:
+                examples = processor.get_test_examples(args.data_dir, args.model_name_or_path, language)
+
+            if not os.path.exists(eval_output_dir) and args.local_rank in [-1, 0]:
+                os.makedirs(eval_output_dir)
+                
+            # Eval!
+            logger.info("***** Running evaluation {} {} *****".format(prefix, language))
+            logger.info("  Num examples = %d", len(examples))
+            
+            predictions = None
+            for idx in tqdm(range(len(examples)), desc="Evaluating"):
+                example = examples[idx]
+                input_ids = preprocessor.pvp.encode_direct(example).to('cuda:0')
+        
+                # multi-gpu eval
+                model = model.to('cuda:0')
+
+                model.eval()
+                labels = [label_list.index(example.label)]
+                indices = [idx]
+
+                with torch.no_grad():
+                    outputs, generations = direct_eval_step(input_ids, preprocessor, model, tokenizer, args.model_type, label_list=label_list)
+                if predictions is None:
+                    predictions = outputs
+                    out_label_ids = labels
+                    all_indices = indices
+                    all_generations = generations
+                else:
+                    predictions.extend(outputs)
+                    all_generations.extend(generations)
+                    out_label_ids = np.append(out_label_ids, labels, axis=0)
+                    all_indices = np.append(all_indices, indices, axis=0)
+               
+            
+            temp_results = {}
+            temp_results['indices'] = all_indices
+            temp_results['predictions'] = predictions
+            temp_results['labels'] = out_label_ids
+            temp_results['generations'] = all_generations
+            # print("*********temp results:*************")
+            # print(temp_results['predictions'], '\n', temp_results['labels'])
+            
+            if results:
+                results['predictions'] = np.concatenate((results['predictions'], temp_results['predictions']), axis=0)
+            else:
+                results.update(temp_results)
+            if args.aug_strategy == 'conc':
+                break
+            
+        # print("*********results:*************")
+        # print(results['predictions'], '\n', results['labels'])
+        
+        results.update(compute_metrics(results['predictions'], results['labels']))
+
+        logger.info("***** Eval results {} {} *****".format(prefix, language))
+        logger.info(f"f1 = {results['f1']}")
+        
+        if output_file:
+            logger.info("***** Save prediction ******")
+            with open(output_file, 'w', encoding='utf-8') as f_out:
+                f_out.write('Prediction\tLabel\n')
+                for p, l, generation in zip(list(results['predictions']), list(out_label_ids), all_generations):
+                    f_out.write('{}\t{}\n'.format(p, l, generation))
+            
 
     return results
 
@@ -611,6 +710,29 @@ def generate_default_inputs_llm(batch, tokenizer, model_type):
         inputs['decoder_input_ids'] = torch.tensor([[tokenizer.bos_token_id]]*batch['input_ids'].shape[0]).to(batch['input_ids'].device)
     return inputs
 
+def direct_eval_step(inputs, preprocessor, model, tokenizer, model_type, label_list=None):
+    outputs = model.generate(**inputs, max_new_tokens=10)
+    max_seq_length = inputs['input_ids'].shape[1]
+    preds = []
+    generations = []
+    verbalizers = [preprocessor.pvp.verbalize(label) for label in label_list]
+    for output in outputs:
+        # print(tokenizer.decode(output))
+        if model_type == 'bloom':
+            generation = tokenizer.decode(output[max_seq_length:-1])
+        else:
+            generation = tokenizer.decode(output[1:-1])
+            generations.append(generation)
+        pred_label_id = None
+        for label_id, label_word in enumerate(verbalizers):
+            if label_word[0][1:] in generation.lower():
+                pred_label_id = label_id
+        if pred_label_id is None:
+            pred_label_id = len(label_list)
+        preds.append(pred_label_id)
+    
+    return preds, generations
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -684,6 +806,8 @@ def main():
     parser.add_argument("--do_train", action="store_true", help="Whether to run training.")
     parser.add_argument("--do_eval", action="store_true", help="Whether to run eval on the test set.")
     parser.add_argument("--do_predict", action="store_true", help="Whether to run prediction.")
+    parser.add_argument("--do_predict_direct", action="store_true",
+                        help="Whether to run direct prediction (evaluated on the generate contents of LLMs directly)")
     parser.add_argument("--do_predict_dev", action="store_true", help="Whether to run prediction.")
     parser.add_argument("--init_checkpoint", type=str, default=None,
                         help="initial checkpoint for predicting the dev set")
@@ -883,6 +1007,7 @@ def main():
             args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
             cache_dir=args.cache_dir if args.cache_dir else None,
         )        
+        tokenizer.padding_side='left'
 
     lang2id = config.lang2id if args.model_type == "xlm" else None
     logger.info("lang2id = {}".format(lang2id))
@@ -897,6 +1022,7 @@ def main():
         preprocessor = LLMPreprocessor(tokenizer, label_list, args.max_seq_length, args.task_name, args.pattern_id)
     else:
         preprocessor = MLMPreprocessor(tokenizer, label_list, args.max_seq_length, args.task_name, args.pattern_id)
+        
 
     # Training
     if args.do_train:
@@ -1022,6 +1148,32 @@ def main():
                 output_file = os.path.join(args.output_dir, 'test-{}.tsv'.format(language))
                 result = evaluate(args, model, preprocessor, tokenizer, split=args.test_split, language=language, lang2id=lang2id,
                                   prefix='best_checkpoint' if args.init_checkpoint else args.model_name_or_path, output_file=output_file)
+                writer.write('{}={}\n'.format(language, result['f1']))
+                logger.info('{}={}'.format(language, result['f1']))
+                total += result['num']
+                total_correct += result['correct']
+            writer.write('total={}\n'.format(total_correct / total))
+
+    if args.do_predict_direct and args.local_rank in [-1, 0]:
+        if 'llm' not in args.task_name:
+            tokenizer = tokenizer_class.from_pretrained(
+                best_checkpoint if best_checkpoint else args.model_name_or_path, do_lower_case=args.do_lower_case)
+        else:
+            tokenizer = tokenizer_class.from_pretrained(
+                best_checkpoint if best_checkpoint else args.model_name_or_path)
+        model = model_class.from_pretrained(best_checkpoint if best_checkpoint else args.model_name_or_path, token=args.hf_token)
+        if args.fp16:
+            model = model.half()
+        model.to(args.device)
+        output_predict_file = os.path.join(args.output_dir, args.test_split + '_results.txt')
+        total = total_correct = 0.0
+        with open(output_predict_file, 'a') as writer:
+            writer.write('======= Predict using the model from {} for {}:\n'.format(best_checkpoint, args.test_split))
+            for language in args.predict_languages.split(','):
+                output_file = os.path.join(args.output_dir, 'test-{}.tsv'.format(language))
+                result = evaluate_direct(args, model, preprocessor, tokenizer, split=args.test_split, language=language, lang2id=lang2id,
+                                  prefix='best_checkpoint' if args.init_checkpoint else args.model_name_or_path, output_file=output_file,
+                                  label_list=label_list)
                 writer.write('{}={}\n'.format(language, result['f1']))
                 logger.info('{}={}'.format(language, result['f1']))
                 total += result['num']

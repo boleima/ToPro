@@ -200,13 +200,13 @@ def get_verbalization_ids(verbalizer: str, tokenizer: PreTrainedTokenizer, force
            corresponds to multiple tokens.
     :return: either the list of token ids or the single token id corresponding to this word
     """
-
-    ids = tokenizer.encode(verbalizer, add_special_tokens=False)
     if not force_single_token:
+        ids = tokenizer.encode(verbalizer, add_special_tokens=False)
+        # assert type(ids) == int, \
+        #     f"Verbalizer '{verbalizer}' does not correspond to a single token, got {tokenizer.convert_ids_to_tokens(tokenizer.encode(verbalizer))}."
         return ids
-    assert len(ids) == 1, \
-        f"Verbalizer '{verbalizer}' does not correspond to a single token, got {tokenizer.convert_ids_to_tokens(ids)}."
-    verbalizer_id = ids[0]
+    
+    verbalizer_id = tokenizer.convert_tokens_to_ids(verbalizer)
     assert verbalizer_id not in tokenizer.all_special_ids, \
         f"Verbalizer {verbalizer} is mapped to a special token {tokenizer.convert_ids_to_tokens(verbalizer_id)}."
     return verbalizer_id

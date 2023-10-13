@@ -137,6 +137,19 @@ class LLMPreprocessor(Preprocessor):
 
         return InputFeatures(input_ids=input_ids, attention_mask=attention_mask,
                              label=label, idx=example.guid)
+        
+
+    def get_input_features_direct(self, example: InputExample, labelled: bool, priming_idx: int = -1, priming: bool = False,
+                           num_priming: int=0, conc: bool = False, **kwargs) -> InputFeatures:
+        """Convert the given example into a set of input features"""
+
+        input_ids = self.pvp.encode(example)
+
+        # label = self.label_map[example.label] if example.label is not None else -100  # convert label to label index
+
+        # return InputFeatures(input_ids=input_ids['input_ids'], attention_mask=input_ids['attention_mask'],
+        #                      label=label, idx=example.guid)
+        return input_ids
 
 class T5Preprocessor(Preprocessor):
     """

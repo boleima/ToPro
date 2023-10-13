@@ -98,7 +98,7 @@ class PanxProcessor(DataProcessor):
         return self.get_examples(data_dir, model, language, split='dev', num_sample=num_sample)
 
     def get_test_examples(self, data_dir, model, language='en', num_sample=-1):
-        return self.get_examples(data_dir, model, language, split='test', num_sample=num_sample)
+        return self.get_examples(data_dir, model, language, split='dev', num_sample=num_sample)
 
     def get_translate_train_examples(self, data_dir, language='en', num_sample=-1):
         """See base class."""
