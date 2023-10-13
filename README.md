@@ -1,6 +1,6 @@
 ## Overview
 
-Title: **TOPRO: Token-Level Prompt Decomposition for Cross-Lingual Sequence Labeling Tasks**
+Title: **ToPro: Token-Level Prompt Decomposition for Cross-Lingual Sequence Labeling Tasks**
 
 Last update: October 15, 2023
 
@@ -10,7 +10,7 @@ In this paper, we propose Token-Level Prompt Decomposition (Topro) which facilit
 
 Our experiments on multilingual NER (PAN-X) and POS tagging (UDPOS) datasets demonstrate that Topro fine-tuning outperforms vanilla fine-tuning and prompt tuning in cross-lingual transfer, especially for languages that are typologically different from the source language English. Our method also attains state-of-the-art (SOTA) performance when employed with mT5 model. Besides, our exploratory study in multilingual large language models shows that Topro performs much better than the current in-context learning method. 
 
-Overall, the performance improvement of Topro shows that it could be a potential novel benchmarking method for sequence labeling tasks.
+Overall, the performance improvement of ToPro shows that it could be a potential novel benchmarking method for sequence labeling tasks.
 
 ## Dataset
 The two datasets (UDPOS and PAN-X) of the current study are based on the XTREME benchmark ([Hu et al. 2020](https://arxiv.org/pdf/2003.11080.pdf)). The datasets can be accessed from this repository [https://github.com/google-research/xtreme](https://github.com/google-research/xtreme).
