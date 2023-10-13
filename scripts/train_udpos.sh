@@ -50,7 +50,6 @@ OUTPUT_DIR="$OUT_DIR/$TASK/${MODEL}-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGT
 
 run(){
     DATA_DIR=$DATA_DIR/$TASK/${TASK}_processed_maxlen${MAX_LENGTH}/
-    RESULT_FILE="results_${TASK}_bl_full_${1}.csv"
     mkdir -p $OUTPUT_DIR
     python3 $REPO/run_baseline/run_tag.py \
       --data_dir $DATA_DIR \
@@ -74,10 +73,6 @@ run(){
       --eval_all_checkpoints \
       --overwrite_output_dir \
       --save_only_best_checkpoint $LC
-    python $PWD/results_to_csv2.py \
-        --input_path "${OUTPUT_DIR}test_results.txt" \
-        --save_path $RESULT_FILE \
-        --name "${TASK}seed${1}" #$NAME
 }
 
 for SEED in "${SEEDS[@]}"

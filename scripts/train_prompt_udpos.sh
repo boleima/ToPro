@@ -40,7 +40,6 @@ fi
 run(){
   NAME="${MODEL}-LR${LR}-epoch${EPOCH}-MaxLen${MAXL}-Pattern${PATTERN_ID}-seed${1}"
   SAVE_DIR="$OUT_DIR/$TASK/$PATTERN_ID/${NAME}/"
-  RESULT_FILE="results_${TASK}_full.csv"
   mkdir -p $SAVE_DIR
   python $PWD/run_baseline/run_prompt_tag.py \
     --model_type $MODEL_TYPE \
@@ -64,11 +63,7 @@ run(){
     --eval_test_set $LC \
     --pattern_id $PATTERN_ID \
     --seed ${1} \
-    --early_stopping	
-  python $PWD/results_to_csv.py \
-    --input_path "${SAVE_DIR}test_results.txt" \
-    --save_path $RESULT_FILE \
-    --name $NAME
+    --early_stopping
 }
 
 for SEED in "${SEEDS[@]}"

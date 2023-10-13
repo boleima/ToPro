@@ -41,7 +41,6 @@ fi
 run(){
   NAME="${MODEL}-LR${LR}-epoch${EPOCHS}-MaxLen${MAXL}-Pattern${PATTERN_ID}-seed${1}"
   SAVE_DIR="$OUT_DIR/$TASK/$PATTERN_ID/${NAME}/"
-  RESULT_FILE="results_${TASK}_full.csv"
   mkdir -p $SAVE_DIR
   python $PWD/run_baseline/run_prompt_tag_t5.py \
     --model_type $MODEL_TYPE \

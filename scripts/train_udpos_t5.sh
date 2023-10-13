@@ -8,13 +8,11 @@ OUT_DIR=${4:-"$REPO/outputs/"}
 
 TASK='udpos'
 export CUDA_VISIBLE_DEVICES=$GPU
-#LANGS="ar,he,vi,id,jv,ms,tl,eu,ml,ta,te,af,nl,en,de,el,bn,hi,mr,ur,fa,fr,it,pt,es,bg,ru,ja,ka,ko,th,sw,yo,my,zh,kk,tr,et,fi,hu,qu,pl,uk,az,lt,pa,gu,ro"
 LANGS='en,af,ar,az,bg,bn,de,el,es,et,eu,fa,fi,fr,gu,he,hi,hu,id,it,ja,jv,ka,kk,ko,lt,ml,mr,ms,my,nl,pa,pl,pt,qu,ro,ru,sw,ta,te,th,tl,tr,uk,ur,vi,yo,zh'
 NUM_EPOCHS=10
 MAX_LENGTH=128
-LR=3e-5 #2e-5
+LR=3e-5
 SEEDS=(10 42 421 520 1218)
-#SEEDS=(10)
 
 LC=""
 if [ $MODEL == "bert-base-multilingual-cased" ]; then
@@ -36,16 +34,10 @@ else
   GRAD_ACC=4
 fi
 
-# +
-#PERCENTAGE=0.01
-#OUTPUT_DIR="$OUT_DIR/$TASK/${MODEL}-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGTH}-Percentage${PERCENTAGE}/"
-
 OUTPUT_DIR="$OUT_DIR/$TASK/${MODEL}-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGTH}/"
-# -
 
-runfewshot(){
+run(){
     DATA_DIR1=$DATA_DIR/$TASK
-    RESULT_FILE="results_${TASK}_bl_full_${1}.csv"
     mkdir -p $OUTPUT_DIR
     python3 $REPO/run_baseline/run_tag_t5.py \
       --data_dir $DATA_DIR1 \
@@ -70,16 +62,9 @@ runfewshot(){
       --eval_all_checkpoints \
       --overwrite_output_dir \
       --save_only_best_checkpoint $LC
-    python $PWD/results_to_csv.py \
-        --input_path "${OUTPUT_DIR}test_results.txt" \
-        --save_path $RESULT_FILE \
-        --name "${TASK}seed${1}" #$NAME
 }
 
 for SEED in "${SEEDS[@]}"
 do
-  runfewshot $SEED
+  run $SEED
 done
-
-# +
-#--labels $DATA_DIR/labels.txt \

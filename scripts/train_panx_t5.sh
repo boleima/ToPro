@@ -38,7 +38,6 @@ OUTPUT_DIR="$OUT_DIR/$TASK/${MODEL}-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGT
 
 run(){
     DATA_DIR1=$DATA_DIR/$TASK
-    RESULT_FILE="results_${TASK}_bl_full_${1}.csv"
     mkdir -p $OUTPUT_DIR
     python3 $REPO/run_baseline/run_tag_t5.py \
       --data_dir $DATA_DIR1 \
