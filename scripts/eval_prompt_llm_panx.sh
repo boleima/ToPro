@@ -41,10 +41,9 @@ else
   #LR=1e-5
 fi
 
-runfewshot(){
+run(){
   NAME="${MODEL}-LR${LR}-epoch${EPOCH}-MaxLen${MAXL}-Pattern${PATTERN_ID}-seed${1}"
   SAVE_DIR="$OUT_DIR/$TASK/$PATTERN_ID/${NAME}/"
-  RESULT_FILE="results_${TASK}_full.csv"
   mkdir -p $SAVE_DIR
   python $PWD/run_baseline/run_prompt_tag_direct.py \
     --model_type $MODEL_TYPE \
@@ -70,15 +69,9 @@ runfewshot(){
     --seed ${1} \
     --early_stopping \
     --fp16
-  #  --init_checkpoint outputs/xnli/bert-base-multilingual-cased-LR2e-5-epoch5-MaxLen128-PatternID1/checkpoint-best/
-	
-  python $PWD/results_to_csv.py \
-    --input_path "${SAVE_DIR}test_results.txt" \
-    --save_path $RESULT_FILE \
-    --name $NAME
 }
 
 for SEED in "${SEEDS[@]}"
 do
-  runfewshot $SEED
+  run $SEED
 done
