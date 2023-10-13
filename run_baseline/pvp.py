@@ -10,6 +10,9 @@ from typing import Tuple, Union, List
 import torch
 
 from processors.utils import InputExample, get_verbalization_ids
+import logging
+
+logger = logging.getLogger(__name__)
 
 # used for designing the prompt template for data example
 FilledPattern = Tuple[List[Union[str, Tuple[str, bool]]], List[Union[str, Tuple[str, bool]]]]
@@ -460,10 +463,45 @@ class LLMPVP(ABC):
         if priming and labeled:
                 prompt += self.verbalize(example.label)[0]
         
+        # if example.guid.split('-')[-1] == '10':
+        #     logger.info("Prompt examples: ")
+        #     logger.info(prompt)
+        
         if max_length:
             return tokenizer(prompt, truncation=True, max_length=max_length).input_ids
         else:
             return tokenizer(prompt, truncation=True, max_length=self.max_seq_length).input_ids
+
+
+    def encode_direct(self, example: InputExample, priming: bool = False, labeled: bool = False,
+               max_length = None) -> List[int]:
+        """
+        Encode an input example using this pattern verbalizer pair
+
+        :param example: an input example to encode
+        :param priming: whether to use this example for priming
+        :param labeled: if "priming=True", whether the label should be appended to this example
+        :return: a list of input ids
+        """
+
+        if not priming:
+            assert not labeled, "'labeled' can only be set to true if 'priming' is also set to true."
+
+        tokenizer = self.tokenizer  # type: PreTrainedTokenizer
+        prompt = self.get_prompt(example)
+
+        if priming and labeled:
+                prompt += self.verbalize(example.label)[0]
+        
+        # if example.guid.split('-')[-1] == '10':
+        #     logger.info("Prompt examples: ")
+        #     logger.info(prompt)
+        tokenizer.padding_side = 'left'
+        if max_length:
+            return tokenizer(prompt, return_tensors="pt", padding='max_length', max_length=max_length)
+        else:
+            return tokenizer(prompt, return_tensors="pt", padding='max_length', max_length=self.max_seq_length)
+
 
     @staticmethod
     def _remove_last(parts: List[Tuple[str, bool]]):
@@ -477,10 +515,9 @@ class LLMPVP(ABC):
         for label in label_list:
             verbalizers = self.verbalize(label)
             for verbalizer in verbalizers:
-                verbalizer_id = get_verbalization_ids(verbalizer, self.tokenizer, force_single_token=False)
+                verbalizer_id = get_verbalization_ids(verbalizer, self.tokenizer, force_single_token=True)
                 assert verbalizer_id != self.tokenizer.unk_token_id, "verbalization was tokenized as <UNK>"
-                verbalizer_logits.append(logits[:, verbalizer_id[0]])     
-
+                verbalizer_logits.append(logits[:, verbalizer_id])     
         return torch.stack(verbalizer_logits, dim=1)
 
     @abstractmethod
@@ -489,7 +526,7 @@ class LLMPVP(ABC):
         Given an input example, apply a pattern to obtain the prompt as input taken by the LLM in string format.
 
         :param example: the input example to be processed
-        :return: a string of promt as input
+        :return: a string of prompt as input
         """
         pass
 
@@ -547,12 +584,17 @@ class PanxLLMPVP(LLMPVP):
     def get_prompt(self, example: InputExample) -> str:
         if self.pattern_id == 0 or self.pattern_id == 1:
             return example.text_a + ' The named entity of ' + example.text_b + ' is a kind of: '
+        elif self.pattern_id == 2 or self.pattern_id == 3:
+            entity_types = "Named entity type: location organisation person place body name other\n"
+            sentence = "Sentence: " + example.text_a + '\n'
+            instruction = "Named entity type of the word " + example.text_b + " in the sentence is"
+            return entity_types + sentence + instruction
         else:
             raise ValueError("No pattern implemented for id {}".format(self.pattern_id))
     
     def verbalize(self, label) -> List[str]:
         # mt0
-        if self.pattern_id == 0:
+        if self.pattern_id == 0 or self.pattern_id == 2:
             return PanxLLMPVP.VERBALIZER_A[label]
         # bloomz
         return PanxLLMPVP.VERBALIZER_B[label]
@@ -563,91 +605,99 @@ class UdposLLMPVP(LLMPVP):
     VERBALIZER_A = {
     "ADJ": ["▁modifica"],
     "ADP": ["▁position"],
-    "ADV": ["▁verbal"],
+    "ADV": ["▁condition"],
     "AUX": ["▁auxili"],
-    "CCONJ": ["▁link"],
+    "CCONJ": ["▁coord"],
     "DET": ["▁determin"],
-    "INTJ": ["▁mode"],
-    "NOUN": ["▁thing"],
+    "INTJ": ["▁inter"],
+    "NOUN": ["▁no"],
     "NUM": ["▁number"],
-    "PART": ["▁functional"],
-    "PRON": ["▁reference"],
+    "PART": ["▁parti"],
+    "PRON": ["▁prono"],
     "PROPN": ["▁name"],
     "PUNCT": ["▁punct"],
-    "SCONJ": ["▁condition"],
+    "SCONJ": ["▁depend"],
     "SYM": ["▁symbol"],
     "VERB": ["▁verb"],
     "X": ["▁other"]
     }
     
-    # verbalizer for Bloomz
+    # # verbalizer for Bloomz
+    # VERBALIZER_B = {
+    # "ADJ": ["Ġmodification"],
+    # "ADP": ["Ġposition"],
+    # "ADV": ["Ġverbal"],
+    # "AUX": ["Ġauxili"],
+    # "CCONJ": ["Ġlink"],
+    # "DET": ["Ġdetermine"],
+    # "INTJ": ["Ġmode"],
+    # "NOUN": ["Ġthing"],
+    # "NUM": ["Ġnumber"],
+    # "PART": ["Ġfunctional"],
+    # "PRON": ["Ġreference"],
+    # "PROPN": ["Ġname"],
+    # "PUNCT": ["Ġpunct"],
+    # "SCONJ": ["Ġcondition"],
+    # "SYM": ["Ġsymbol"],
+    # "VERB": ["Ġverb"],
+    # "X": ["Ġother"]
+    # }
+    
+    
     VERBALIZER_B = {
-    "ADJ": ["Ġmodification"],
-    "ADP": ["Ġposition"],
-    "ADV": ["Ġverbal"],
-    "AUX": ["Ġauxili"],
-    "CCONJ": ["Ġlink"],
-    "DET": ["Ġdetermine"],
-    "INTJ": ["Ġmode"],
-    "NOUN": ["Ġthing"],
-    "NUM": ["Ġnumber"],
-    "PART": ["Ġfunctional"],
-    "PRON": ["Ġreference"],
+    "ADJ": ['Ġadjective'],
+    "ADP": ['Ġposition'],
+    "ADV": ['Ġadverb'],
+    "AUX": ['Ġauxiliary'],
+    "CCONJ": ['Ġcoordin'],
+    "DET": ['Ġdetermin'],
+    "INTJ": ['Ġinter'],
+    "NOUN": ['Ġnoun'],
+    "NUM": ['Ġnumeral'],
+    "PART": ['Ġparticle'],
+    "PRON": ['Ġpronoun'],
     "PROPN": ["Ġname"],
-    "PUNCT": ["Ġpunct"],
-    "SCONJ": ["Ġcondition"],
+    "PUNCT": ['Ġpun'],
+    "SCONJ": ['Ġsubordin'],
     "SYM": ["Ġsymbol"],
     "VERB": ["Ġverb"],
     "X": ["Ġother"]
-    }    
+    }     
 
     def get_prompt(self, example: InputExample) -> str:
-        if self.pattern_id == 0 or self.pattern_id == 1:
-            return example.text_a + ' The pos tag of ' + example.text_b + ' is a kind of '
+        # bloomz
+        if self.pattern_id == 1 or self.pattern_id == 3:
+            pos_tag = "POS tag set: adjective position condition auxiliary coord determiner interjection noun number particle pronoun name punctuation subordination symbol verb other\n"
+            sentence = 'Sentence: ' + example.text_a + '\n'
+            instruction = ' The pos tag of the word ' + example.text_b + ' in the sentence is a kind of'
+            # with pos tag set in prompt
+            if self.pattern_id == 1:
+                return pos_tag + sentence + instruction
+            # without pos tag set in prompt
+            return sentence + instruction
+            # return ''
+        
+        # mt0
+        elif self.pattern_id == 0 or self.pattern_id == 2:
+            #TODO
+            pos_tag = "POS tag set: modifica position adverb auxiliary coordination determiner interjection noun numeral parti pronoun name punct depend symbol verb other\n"
+            sentence = 'Sentence: ' + example.text_a + '\n'
+            instruction = ' The pos tag of the word ' + example.text_b + ' in the sentence is a kind of'
+            # with pos tag set in prompt
+            if self.pattern_id == 0:
+                return pos_tag + sentence + instruction
+            # without pos tag set in prompt
+            return sentence + instruction
+            # return ''
         else:
             raise ValueError("No pattern implemented for id {}".format(self.pattern_id))
     
     def verbalize(self, label) -> List[str]:
         # mt0
-        if self.pattern_id == 0:
+        if self.pattern_id == 0 or self.pattern_id==2:
             return UdposLLMPVP.VERBALIZER_A[label]
         # bloomz
         return UdposLLMPVP.VERBALIZER_B[label]
-
-class UdposPVP(PVP):
-    VERBALIZER = {
-    "ADJ": ["modification"],
-    "ADP": ["position"],
-    "ADV": ["verbal"],
-    "AUX": ["auxiliar"],
-    "CCONJ": ["link"],
-    "DET": ["determine"],
-    "INTJ": ["mode"],
-    "NOUN": ["thing"],
-    "NUM": ["number"],
-    "PART": ["functional"],
-    "PRON": ["reference"],
-    "PROPN": ["name"],
-    "PUNCT": ["punct"],
-    "SCONJ": ["condition"],
-    "SYM": ["symbol"],
-    "VERB": ["verb"],
-    "X": ["other"]
-    }
-
-    def get_parts(self, example: InputExample) -> FilledPattern:
-        text_a = self.shortenable(example.text_a)
-        text_b = self.shortenable(example.text_b)
-        
-        # pattern 0: TEXT. The tag is [mask].
-        if self.pattern_id == 0:
-            return [text_a], ['The pos tag of ', text_b, " is a kind of: ", self.mask, ' .']
-        else:
-            raise ValueError("No pattern implemented for id {}".format(self.pattern_id))
-
-    def verbalize(self, label) -> List[str]:
-        return UdposPVP.VERBALIZER[label]
-
 
 PVPS = {
     'xnli': XnliPVP,

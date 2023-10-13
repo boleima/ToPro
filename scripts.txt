@@ -1,0 +1,4 @@
+# eval llm direct
+CUDA_VISIBLE_DEVICES=0 python run_baseline/run_prompt_tag_direct.py --model_type bloom --model_name_or_path bigscience/bloomz-7b1 --task_name panx-llm --do_predict_direct --data_dir download/toy_panx --predict_languages en --pattern_id 3 --output_dir outputs/udpos-llm/ --fp16 --overwrite_cache
+
+nohup scripts/./eval_prompt_llm_udpos_direct.sh 3 bigscience/mt0-xxl mt0 2 > outputs/eval_udpos_mt0_direct_p2.log &
