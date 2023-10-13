@@ -9,14 +9,16 @@ if [ "$MODEL" == "mt5-base" ]
         if [ "$METHOD" == "topro" ]
             then
                 source scripts/train_prompt_"$TASK"_t5.sh 0 "google/mt5-base"
-            else
+        elif [ "$METHOD" == "vanilla" ]
+            then
                 source scripts/train_"$TASK"_t5.sh "google/mt5-base" 0
         fi
     else
         if [ "$METHOD" == "topro" ]
             then
                 source scripts/train_prompt_$TASK.sh 0 $MODEL
-            else
+        elif [ "$METHOD" == "vanilla" ]
+            then
                 source scripts/train_$TASK.sh $MODEL 0
         fi
 fi
