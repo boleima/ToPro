@@ -1,0 +1,7 @@
+datasets-2.14.5
+peft-0.5.0
+sentence-transformers-2.2.2
+seqeval-1.2.2
+tensorboardX-2.6.2.2
+transformers-4.20.0 # running ToPro
+transformers-2.3.0 # running Vanilla
