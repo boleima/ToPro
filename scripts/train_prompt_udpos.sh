@@ -26,7 +26,6 @@ elif [ $MODEL == "xlm-roberta-large" ] || [ $MODEL == "xlm-roberta-base" ]; then
   MODEL_TYPE="xlmr"
 fi
 SEEDS=(10 42 421 520 1218)
-#SEEDS=(42)
 
 if [ $MODEL == "xlm-mlm-100-1280" ] || [ $MODEL == "xlm-roberta-large" ]; then
   BATCH_SIZE=2
@@ -38,7 +37,7 @@ else
   #LR=1e-5
 fi
 
-runfewshot(){
+run(){
   NAME="${MODEL}-LR${LR}-epoch${EPOCH}-MaxLen${MAXL}-Pattern${PATTERN_ID}-seed${1}"
   SAVE_DIR="$OUT_DIR/$TASK/$PATTERN_ID/${NAME}/"
   RESULT_FILE="results_${TASK}_full.csv"
@@ -65,9 +64,7 @@ runfewshot(){
     --eval_test_set $LC \
     --pattern_id $PATTERN_ID \
     --seed ${1} \
-    --early_stopping
-  #  --init_checkpoint outputs/xnli/bert-base-multilingual-cased-LR2e-5-epoch5-MaxLen128-PatternID1/checkpoint-best/
-	
+    --early_stopping	
   python $PWD/results_to_csv.py \
     --input_path "${SAVE_DIR}test_results.txt" \
     --save_path $RESULT_FILE \
@@ -76,5 +73,5 @@ runfewshot(){
 
 for SEED in "${SEEDS[@]}"
 do
-  runfewshot $SEED
+  run $SEED
 done
