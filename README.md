@@ -18,7 +18,7 @@ The two datasets (UDPOS and PAN-X) of the current study are based on the XTREME 
 
 ## Content
 
-- `run_baseline`: py scripts for Vanilla and Topro. The code for the Prompt-Tuning (PT) baseline ([Tu et al. 2022](https://arxiv.org/pdf/2210.12360.pdf)) is available in their original repository: [https://github.com/salesforce/MPT](https://github.com/salesforce/MPT).
+- `run_baseline`: py scripts for Vanilla and ToPro. The code for the Prompt-Tuning (PT) baseline ([Tu et al. 2022](https://arxiv.org/pdf/2210.12360.pdf)) is available in their original repository: [https://github.com/salesforce/MPT](https://github.com/salesforce/MPT).
 - `scripts`: sh scripts to run the models
 
 
