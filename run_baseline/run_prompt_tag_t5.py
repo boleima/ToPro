@@ -29,7 +29,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from torch.utils.data import RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
-from metrics_prompt import span_f1
+from metrics import span_f1_prompt
 
 from transformers import (
     WEIGHTS_NAME,
@@ -386,7 +386,7 @@ def evaluate(args, model, preprocessor, tokenizer, split='train', language='en',
                     target_texts.extend(target_text)
                     generated_texts.extend(generated_text)
         
-        results = span_f1(target_texts, generated_texts)
+        results = span_f1_prompt(target_texts, generated_texts)
 
         logger.info("***** Eval results {} {} *****".format(prefix, language))
         logger.info(f"f1 = {results['f1']}")
