@@ -55,7 +55,7 @@ run(){
     python3 $REPO/run_baseline/run_tag.py \
       --data_dir $DATA_DIR \
       --model_type $MODEL_TYPE \
-      --labels udpos_labels.txt \
+      --labels $REPO/run_baseline/udpos_labels.txt \
       --model_name_or_path $MODEL \
       --output_dir $OUTPUT_DIR \
       --max_seq_length  $MAX_LENGTH \

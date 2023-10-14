@@ -43,7 +43,7 @@ run(){
       --data_dir $DATA_DIR1 \
       --model_type $MODEL_TYPE \
       --task $TASK \
-      --labels panx_labels.txt \
+      --labels $REPO/run_baseline/panx_labels.txt \
       --model_name_or_path $MODEL \
       --output_dir $OUTPUT_DIR \
       --max_seq_length  $MAX_LENGTH \
