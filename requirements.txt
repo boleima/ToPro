@@ -3,5 +3,5 @@ peft-0.5.0
 sentence-transformers-2.2.2
 seqeval-1.2.2
 tensorboardX-2.6.2.2
-transformers-4.34.0  # running ToPro with mBERT, XLM-R, and mT5, and Vanilla with mT5, and evaluation on LLM
+transformers-4.34.0  # running ToPro with mBERT, XLM-R and mT5, and Vanilla with mT5, and evaluation on LLM
 transformers-2.3.0  # only for running Vanilla with mBERT and XLM-R
