@@ -6,6 +6,8 @@ Anonymous ARR submission
 
 Last update: October 14, 2023
 
+Abstract: 
+
 Prompt-based methods have been successfully applied to multilingual pretrained language models for zero-shot cross-lingual understanding. However, most previous studies primarily focused on sentence-level classification tasks, and only a few considered token-level labeling tasks such as Named Entity Recognition (NER) and Part-of-Speech (POS) tagging. 
 
 In this paper, we propose Token-Level Prompt Decomposition (ToPro) which facilitates the application of prompt-based learning to token-level sequence labeling tasks. Our ToPro method decomposes the input sentence into single tokens and applies one prompt template to each token. 
