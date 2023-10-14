@@ -176,3 +176,38 @@ def span_f1(targets, predictions):
       sum(false_negatives.values()))
 
   return {'f1': f1_measure, 'precision': precision, 'recall': recall}
+
+def span_f1_prompt(targets, predictions):
+  """Computes Span based F1 score.
+  """
+
+  true_positives = collections.defaultdict(int)
+  false_positives = collections.defaultdict(int)
+  false_negatives = collections.defaultdict(int)
+
+  def compute_f1_metrics(true_positives, false_positives, false_negatives):
+    precision = float(true_positives) / float(true_positives + false_positives +
+                                              1e-13)
+    recall = float(true_positives) / float(true_positives + false_negatives +
+                                           1e-13)
+    f1_measure = 2. * ((precision * recall) / (precision + recall + 1e-13))
+    return precision, recall, f1_measure
+
+  correct = 0
+  labels = set(predictions)
+  for target, pred in zip(targets, predictions):
+    if target in pred:
+      true_positives[target] += 1
+      correct += 1
+    else:
+      if target not in pred and pred in labels:
+        false_negatives[target] += 1
+      if target not in pred and pred not in labels:
+        false_positives[pred] += 1
+
+  precision, recall, f1_measure = compute_f1_metrics(
+      sum(true_positives.values()), sum(false_positives.values()),
+      sum(false_negatives.values()))
+
+  return {'f1': f1_measure, 'precision': precision, 'recall': recall, 'correct': correct, 'num': len(predictions)}
+
