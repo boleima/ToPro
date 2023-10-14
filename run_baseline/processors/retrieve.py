@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# Author: Niel
-# Date: 2022/6/17  16:33
 
 import os
 import pickle

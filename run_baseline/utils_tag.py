@@ -1,4 +1,5 @@
 # coding=utf-8
+# script modified based on:
 # Copyright 2018 The Google AI Language Team Authors, 
 # The HuggingFace Inc. team, and The XTREME Benchmark Authors.
 # Copyright (c) 2018, NVIDIA CORPORATION.  All rights reserved.

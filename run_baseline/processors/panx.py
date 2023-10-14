@@ -1,4 +1,5 @@
 # coding=utf-8
+# script modified based on:
 # Copyright 2018 The Google AI Language Team Authors and The HuggingFace Inc. team.
 # Copyright (c) 2018, NVIDIA CORPORATION.  All rights reserved.
 #
@@ -13,7 +14,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-""" XNLI utils (dataset loading and evaluation) """
+""" modified for panx processing based on XNLI utils (dataset loading and evaluation) """
 
 import logging
 import os
