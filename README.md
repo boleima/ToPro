@@ -12,7 +12,7 @@ Prompt-based methods have been successfully applied to multilingual pretrained l
 
 In this paper, we propose Token-Level Prompt Decomposition (ToPro) which facilitates the application of prompt-based learning to token-level sequence labeling tasks. Our ToPro method decomposes the input sentence into single tokens and applies one prompt template to each token. 
 
-Our experiments on multilingual NER (PAN-X) and POS tagging (UDPOS) datasets demonstrate that ToPro-based fine-tuning outperforms vanilla fine-tuning and prompt tuning in cross-lingual transfer, especially for languages that are typologically different from the source language English. Our method also attains state-of-the-art performance when employed with mT5 model. Besides, our exploratory study in multilingual large language models shows that ToPro performs much better than the current in-context learning method. 
+Our experiments on multilingual NER (PAN-X) and POS tagging (UDPOS) datasets demonstrate that ToPro-based fine-tuning outperforms vanilla fine-tuning and prompt tuning in cross-lingual transfer, especially for languages that are typologically different from the source language English. Our method also attains state-of-the-art (SOTA) performance when employed with mT5 model. Besides, our exploratory study in multilingual large language models shows that ToPro performs much better than the current in-context learning method. 
 
 Overall, the performance improvement of ToPro shows that it could potentially be a novel benchmarking method for sequence labeling tasks.
 
