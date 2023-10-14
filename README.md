@@ -4,7 +4,7 @@
 
 Anonymous ARR submission
 
-Last update: October 15, 2023
+Last update: October 14, 2023
 
 Prompt-based methods have been successfully applied to multilingual pretrained language models for zero-shot cross-lingual understanding. However, most previous studies primarily focused on sentence-level classification tasks, and only a few considered token-level labeling tasks such as Named Entity Recognition (NER) and Part-of-Speech (POS) tagging. 
 
