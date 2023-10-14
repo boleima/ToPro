@@ -47,7 +47,7 @@ run(){
     --task_name $TASK \
     --do_train \
     --do_predict \
-    --data_dir $DATA_DIR/${TASK}/"panx_processed_maxlen128" \
+    --data_dir $DATA_DIR/${TASK} \
     --gradient_accumulation_steps $GRAD_ACC \
     --per_gpu_train_batch_size $BATCH_SIZE \
     --save_steps 1000 \

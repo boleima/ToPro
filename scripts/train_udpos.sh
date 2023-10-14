@@ -49,7 +49,8 @@ fi
 OUTPUT_DIR="$OUT_DIR/$TASK/${MODEL}-LR${LR}-epoch${NUM_EPOCHS}-MaxLen${MAX_LENGTH}/"
 
 run(){
-    DATA_DIR=$DATA_DIR/$TASK/${TASK}_processed_maxlen${MAX_LENGTH}/
+    #DATA_DIR=$DATA_DIR/$TASK/${TASK}_processed_maxlen${MAX_LENGTH}/
+    DATA_DIR=$DATA_DIR/$TASK
     mkdir -p $OUTPUT_DIR
     python3 $REPO/run_baseline/run_tag.py \
       --data_dir $DATA_DIR \
