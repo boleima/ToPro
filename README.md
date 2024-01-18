@@ -1,8 +1,6 @@
 ## Overview
 
-**ToPro: Token-Level Prompt Decomposition for Cross-Lingual Sequence Labeling Tasks**
-
-EACL2024
+**ToPro: Token-Level Prompt Decomposition for Cross-Lingual Sequence Labeling Tasks** (EACL2024)
 
 Abstract: 
 
