@@ -2,7 +2,7 @@
 
 **ToPro: Token-Level Prompt Decomposition for Cross-Lingual Sequence Labeling Tasks**
 
-Anonymous ARR submission
+EACL2024
 
 Abstract: 
 
