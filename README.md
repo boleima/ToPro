@@ -1,6 +1,6 @@
 ## Overview
 
-**ToPro: Token-Level Prompt Decomposition for Cross-Lingual Sequence Labeling Tasks** (EACL2024)
+**[ToPro: Token-Level Prompt Decomposition for Cross-Lingual Sequence Labeling Tasks](https://aclanthology.org/2024.eacl-long.164)** (EACL2024)
 
 Abstract: 
 
@@ -38,4 +38,28 @@ source scripts/train.sh [task] [model] [method]
 source scripts/eval_llm.sh [task]
 ```
 
+## Citation
 
+If you found the resources in this repository useful, please cite:
+
+```
+@inproceedings{ma-etal-2024-topro,
+    title = "{T}o{P}ro: Token-Level Prompt Decomposition for Cross-Lingual Sequence Labeling Tasks",
+    author = {Ma, Bolei  and
+              Nie, Ercong  and
+              Yuan, Shuzhou  and
+              Schmid, Helmut  and
+              F{\"a}rber, Michael  and
+              Kreuter, Frauke  and
+              Schuetze, Hinrich},
+    editor = "Graham, Yvette  and
+              Purver, Matthew",
+    booktitle = "Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = mar,
+    year = "2024",
+    address = "St. Julian{'}s, Malta",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.eacl-long.164",
+    pages = "2685--2702",
+}
+```
